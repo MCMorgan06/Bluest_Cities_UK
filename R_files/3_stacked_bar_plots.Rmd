@@ -1,0 +1,126 @@
+---
+title: "Decile_plots"
+author: "Matthew Morgan"
+date: "2024-07-22"
+output: html_document
+---
+```{r load packages}
+library(readr)
+library(ggplot2)
+library(reshape2)
+library(ggsignif)
+library(ggpubr)
+library(patchwork)
+library(dplyr)
+library(psych)
+```
+
+```{r set working directory}
+#setwd("")
+getwd()
+```
+
+```{r bring in data}
+df <- read_csv("blue_decile.csv",
+               show_col_types = FALSE)
+```
+
+```{r numeric summary}
+numeric_summary <- df %>%
+  summarise(across(where(is.numeric), list(mean = mean, sd = sd, min = min, max = max), na.rm = TRUE))
+print(numeric_summary)
+#
+describe(df)
+```
+
+```{r stacked bar plot}
+# Reshape the data for plotting
+data_long <- melt(df, id.vars = 'Blue decile', variable.name = "Space_type", value.name = "Percentage")
+
+# Reorder the levels to ensure Blue space is at the bottom, then Green space, then Grey space
+data_long$Space_type <- factor(data_long$Space_type, levels = c("Grey space", "Green space", "Blue space"))
+
+# Calculate overall averages for each space type
+average_values <- aggregate(Percentage ~ Space_type, data_long, mean)
+
+# Define line types for each space type
+line_types <- c("Grey space" = "dashed", "Green space" = "dashed", "Blue space" = "dashed")
+
+# Define line thickness
+line_thickness <- 0.8
+
+# Create the stacked column plot
+p1 <- ggplot(data_long, aes(x = factor(`Blue decile`), y = Percentage, fill = Space_type)) +
+  geom_col(position = "stack", colour = "black") +
+  scale_fill_manual(values = c("Blue space" = "#3e5d96", "Green space" = "#AFE86D", "Grey space" = "lightgrey")) +
+  theme_minimal() +
+  labs(title = "",
+       x = "Blue Decile",
+       y = "Percentage",
+       fill = "Space Type") +
+  theme(legend.title = element_blank(),
+        legend.text = element_text(size = 11),
+        axis.title.y = element_text(size = 12.5),
+         axis.text.y = element_text(size = 12.5),
+         axis.text.x = element_text(size = 12.5),
+        )
+
+
+# Add horizontal lines for overall averages with specified line types, black color, and adjustable thickness
+for(i in 1:nrow(average_values)) {
+  p1 <- p1 + geom_hline(yintercept = average_values$Percentage[i], 
+                        linetype = line_types[average_values$Space_type[i]], 
+                        color = "black", 
+                        size = line_thickness)
+}
+
+# Print the plot
+print(p1)
+```
+
+```{r class deciles}
+class <- read_csv("class_deciles.csv",
+               show_col_types = FALSE)
+View(class)
+```
+
+```{r stacked bar plot class}
+# Reshape the data for plotting
+data_long <- melt(class, id.vars = 'Blue decile', variable.name = "Space_type", value.name = "Percentage")
+
+# Reorder the levels to ensure Blue space is at the bottom, then Green space, then Grey space
+data_long$Space_type <- factor(data_long$Space_type, levels = c("Inland","Estuarine","Coastal"))
+
+# Create the stacked column plot
+p2 <- ggplot(data_long, aes(x = factor(`Blue decile`), y = Percentage, fill = Space_type)) +
+  geom_col(position = "stack", colour = "black") +
+  scale_fill_manual(values = c("Coastal" = "#6495ED", "Inland" = "#FFA07A", "Estuarine" = "#9FE2BF")) +
+  theme_minimal()+
+  labs(title = "",
+       x = "",
+       y = "Percentage",
+       fill = "Space Type") +
+  theme(legend.title = element_blank(),
+        legend.text = element_text(size = 11),
+         axis.text.x = element_blank(),
+         axis.title.y = element_text(size = 12.5),
+         axis.text.y = element_text(size = 12.5),
+        )
+
+print(p2)
+```
+
+```{r combine plots}
+# 
+combined_plot <- p2 / p1
+
+combined_plot <- (p2 + ggtitle("A")) / (p1 + ggtitle("B"))
+
+# Print the combined plot
+print(combined_plot)
+
+#
+ggsave(filename = "stacked_plot.png", plot = combined_plot, dpi = 300)
+
+```
+

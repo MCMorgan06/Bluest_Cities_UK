@@ -1,0 +1,891 @@
+---
+title: "Blue Space Analysis"
+author: "Matthew Morgan"
+date: "2024-03-11"
+output: html_document
+---
+
+```{r load all required packages}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(vegan)
+library(tidyverse)
+library(psych)
+library(MASS)
+library(car)
+library(lme4)
+library(mgcv)
+library(influence.ME)
+library(ggpubr)
+library(gridExtra)
+library(gratia)
+library(broom)
+library(corrplot)
+library(ggcorrplot)
+```
+
+```{r set_directory}
+setwd("C:/users/721049/OneDrive - hull.ac.uk/GitHub_Cities_Analysis")
+getwd()
+```
+
+```{r read in data}
+df_1 <- read_csv("UKCEHLCM_final_df_200.csv", show_col_types = FALSE)
+```
+
+```{r create new columns}
+column_names <- colnames(df_1)
+print(column_names)
+
+# new columns in df for looking at blue space
+
+df_2 <- df_1 %>%
+  mutate(
+    built_cover = rowSums(across(c(Suburban, Urban)), na.rm = TRUE),
+    grassland = rowSums(across(c(`Improved grassland`, `Neutral grassland`, `Calacareous grassland`, `Acid grassland`)), na.rm = TRUE),
+    tree_cover = rowSums(across(c(`Deciduous woodland`, `Coniferous woodland`)), na.rm = TRUE),
+    coastal_bg = rowSums(across(c(Saltwater, `Supralittoral rock`, `Supralittoral sediment`, `Littoral rock`, `Littoral sediment`, Saltmarsh, foreshore_area, tidal_water_area)), na.rm = TRUE),
+    inland_bg = rowSums(across(c(surface_water_area, Freshwater, Fen, Bog)), na.rm = TRUE),
+    other_cover = rowSums(across(c(`Heather grassland`, `Heather`, `Inland rock`)), na.rm = TRUE),
+    lit_sediment_foreshore = rowSums(across(c(`Littoral sediment`, foreshore_area)), na.rm = TRUE),
+    saltwater_tidalwater = rowSums(across(c(Saltwater, tidal_water_area)), na.rm = TRUE),
+    freshwater_surfacewater = rowSums(across(c(Freshwater, surface_water_area)), na.rm = TRUE),
+  ) %>%
+  mutate(
+    greenspace = rowSums(across(c(grassland, tree_cover, other_cover, Arable)), na.rm = TRUE),
+    bluespace = rowSums(across(c(inland_bg, coastal_bg)), na.rm = TRUE),
+    all_inland = rowSums(across(c(Freshwater, surface_water_area)), na.rm = TRUE),
+    all_tidal = rowSums(across(c(Saltwater, tidal_water_area)), na.rm = TRUE),
+    check = rowSums(across(c(built_cover, greenspace, bluespace)), na.rm = TRUE)
+  )
+
+buffered_city <- (df_2[1, 28])
+classified_land <- (df_2[1, 35]) 
+buffered_city
+classified_land
+```
+
+Note that land use data has been absorbed into land cover by this point, 
+so there are 21 land cover types, as in the original UKCEH LC map.
+```{r calculating landcover diversity indicies}
+
+all_cover <- c('Deciduous woodland', 'Coniferous woodland', 'Arable', 'Improved grassland',
+                 'Neutral grassland', 'Calacareous grassland', 'Acid grassland', 'Fen', 
+                 'Heather', 'Heather grassland', 'Bog', 'Inland rock', 'saltwater_tidalwater', 
+                 'freshwater_surfacewater', 'Supralittoral rock', 'Supralittoral sediment', 
+                 'Littoral rock', 'lit_sediment_foreshore', 'Saltmarsh', 'Urban', 
+                 'Suburban')
+
+# Check no land cover types are missing from the all_cover vector by cross checking
+
+df_3 <- df_2 %>%
+  rowwise() %>%
+  mutate(div.check = sum(c_across(all_of(all_cover)))) %>%
+  ungroup()
+print(df_2$check[1]) # 22267785
+print(df_3$div.check[1]) # 22267785
+
+# Create diversity columns
+
+df_2 <- df_2 %>%
+  rowwise() %>%
+  mutate(
+    shannon = diversity(c_across(all_of(all_cover)), index = "shannon"),
+    simpsons = diversity(c_across(all_of(all_cover)), index = "simpson")
+  ) %>%
+  ungroup()
+```
+
+```{r check zero influence}
+# isolate one bua at a time
+Aberdare <- filter(df_2, name == "Aberdare")
+
+# Remove columns where all values are zero
+Aberdare_clean <- Aberdare %>% select_if(~any(. != 0))
+str(Aberdare_clean)
+
+# Get the column names from the Aberdare_clean dataframe
+aber_clean_names <- names(Aberdare_clean)
+
+# Find what is in all_land_cover but not in Aberdare_clean
+missing_in_aberclean <- setdiff(all_cover, aber_clean_names)
+
+# Find what columns are in Aberdare_clean but not in all_land_cover
+extra_in_aberclean <- setdiff(aber_clean_names, all_cover)
+
+# Print the results
+print(paste("Missing in Aberdare_clean:", toString(missing_in_aberclean))) # remove land cover that is not present
+print(paste("Extra in Aberdare_clean:", toString(extra_in_aberclean))) 
+
+# Aberdare cover
+aberdare_cover <- c('Deciduous woodland', 'Coniferous woodland', 'Arable', 'Improved grassland',
+                 'Neutral grassland', 'Calacareous grassland', 'Acid grassland', 'Fen', 
+                 'Heather', 'Heather grassland', 'Bog', 'Inland rock', 
+                 'freshwater_surfacewater', 'Urban', 
+                 'Suburban')
+
+Aberdare_clean_2 <- Aberdare_clean %>%
+  rowwise() %>%
+  mutate(
+    shannon1 = diversity(c_across(all_of(aberdare_cover)), index = "shannon"),
+    simpsons1 = diversity(c_across(all_of(aberdare_cover)), index = "simpson")
+  ) %>%
+  ungroup()
+
+# No difference with or without zero's when calculating diversity of land cover. 
+shan_with_zero <- (df_2[1, 50]) #1.48
+simp_with_zero <- (df_2[1, 51]) #0.69
+shan_without_zero <- (Aberdare_clean_2[1, 40]) # 1.48
+simp_without_zero <- (Aberdare_clean_2[1, 41]) # 0.69
+t1 <- shan_with_zero - shan_without_zero 
+t2 <- simp_with_zero - simp_without_zero
+t1
+t2
+```
+
+Check that the new columns are correct (should sum to the same value as lu_lc_total) 
+```{r quality_checks}
+colnames(df_2)
+# 
+check1 <- df_2[1:500, 35] # original lc_lu sum 
+check2 <- df_2[1:500, 49] # check sum of bluespace, greenspace and greyspace
+
+# Calculate the difference (all zero)
+difference <- check1 - check2
+formatted_difference <- round(difference, 3)
+print(formatted_difference)
+
+# Percentages of blue, green, grey
+df_3 <- df_2 %>%
+  mutate(
+    rel_built = (built_cover / lc_lu_total) * 100,
+    total_green = (greenspace / lc_lu_total) * 100,
+    total_blue = (bluespace / lc_lu_total) * 100,
+    )
+```
+
+```{r remove minor urban areas}
+# remove sites with minor populations
+removed_entries <- df_3[df_3$population_counts < 5000, ]
+
+# Step 1: Remove population_counts >= 5000 (minor populations not suitable for this study)
+df_3 <- df_3[df_3$population_counts >= 5000, ]
+removed_entries
+
+# export dataframe for other analysis (optional)
+# export df
+# write.csv(df_3, "analysis_5.csv", row.names = FALSE)
+```
+
+```{r descriptive_stats}
+# Create summaries for green, blue and grey space
+summary <- df_3 %>%
+  summarise(across(c(rel_built, total_green, total_blue), 
+                   list(mean = mean, sd = sd, min = min, max = max), na.rm = TRUE))
+print(summary)
+
+# Descriptive statistics
+descriptive <- describe(df_3)
+```
+
+```{r blue space diagnostics}
+# Subset
+coastal <- df_3 %>% filter(class == "coastal") 
+inland <- df_3 %>% filter(class == "inland") 
+estuarine <- df_3 %>% filter(class == "estuarine") 
+
+# Function to create histograms and Q-Q plots
+create_plots <- function(data, title_prefix, color) {
+  hist(data, main = paste("Histogram of", title_prefix, "Blue Space"), xlab = "Blue Space %", col = color, breaks = 20, cex.main = 2, cex.lab = 1.8, cex.axis = 1.8)
+  qqnorm(data, main = paste("Q-Q Plot for", title_prefix, "Blue Space"), cex.main = 2, cex.lab = 1.8, cex.axis = 1.8)
+  qqline(data, col = color)
+}
+
+# 
+png("blue_diagnostic_plots_v3.png", width = 1500, height = 1000)
+
+# canvas
+par(mfrow = c(3, 2), mar = c(5, 5, 4, 2)) 
+
+# plot
+create_plots(coastal$total_blue, "Coastal", "blue")
+create_plots(inland$total_blue, "Inland", "red")
+create_plots(estuarine$total_blue, "Estuarine", "darkgreen")  # Corrected from inland to estuarine
+```
+
+```{r spearman's rank correlation - area}
+# inland data vs bua size
+inland_correlation_result <- cor.test(inland$total_blue, inland$original_bua_area, method = "spearman")
+print(inland_correlation_result)  #  *inland data has a weak positive relationship, which is stat. significant
+plot(inland$original_bua_area, inland$total_blue)
+     
+# coastal blue space and bua size
+coastal_correlation_result <- cor.test(coastal$total_blue, coastal$original_bua_area, method = "spearman")
+print(coastal_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(coastal$original_bua_area, coastal$total_blue)
+
+# estuarine blue space and bua size
+coastal_correlation_result <- cor.test(estuarine$total_blue, estuarine$original_bua_area, method = "spearman")
+print(coastal_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(estuarine$original_bua_area, estuarine$total_blue)
+```
+```{r spearman's rank correlation - population counts}
+# inland data vs bua size
+inland_pop_correlation_result <- cor.test(inland$total_blue, inland$population_counts, method = "spearman")
+print(inland_pop_correlation_result)  #  *inland data has a weak positive relationship, which is stat. significant
+plot(inland$population_counts, inland$total_blue)
+     
+# coastal blue space and bua size
+coastal_pop_correlation_result <- cor.test(coastal$total_blue, coastal$population_counts, method = "spearman")
+print(coastal_pop_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(coastal$population_counts, coastal$total_blue)
+
+# estuarine blue space and bua size
+estuarine_pop_correlation_result <- cor.test(estuarine$total_blue, estuarine$population_counts, method = "spearman")
+print(estuarine_pop_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(estuarine$population_counts, estuarine$total_blue)
+```
+
+```{r spearman's rank correlation - grey space}
+# inland data vs bua size
+inland_grey_correlation_result <- cor.test(inland$total_blue, inland$rel_built, method = "spearman")
+print(inland_grey_correlation_result)  #  *inland data has a weak positive relationship, which is stat. significant
+plot(inland$rel_built, inland$total_blue)
+     
+# coastal blue space and bua size
+coastal_grey_correlation_result <- cor.test(coastal$total_blue, coastal$rel_built, method = "spearman")
+print(coastal_grey_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(coastal$rel_built, coastal$total_blue)
+
+# estuarine blue space and bua size
+estuarine_grey_correlation_result <- cor.test(estuarine$total_blue, estuarine$rel_built, method = "spearman")
+print(estuarine_grey_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(estuarine$rel_built, estuarine$total_blue)
+```
+```{r spearman's rank correlation - green space}
+# inland data vs bua size
+inland_green_correlation_result <- cor.test(inland$total_blue, inland$total_green, method = "spearman")
+print(inland_green_correlation_result)  #  *inland data has a weak positive relationship, which is stat. significant
+plot(inland$total_green, inland$total_blue)
+     
+# coastal blue space and bua size
+coastal_green_correlation_result <- cor.test(coastal$total_blue, coastal$total_green, method = "spearman")
+print(coastal_green_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(coastal$total_green, coastal$total_blue)
+
+# estuarine blue space and bua size
+estuarine_green_correlation_result <- cor.test(estuarine$total_blue, estuarine$total_green, method = "spearman")
+print(estuarine_green_correlation_result) # ** coastal data has a weak positive relationship, which is stat. significant
+plot(estuarine$total_green, estuarine$total_blue)
+```
+
+```{r diagnostic plots bluespace}
+# check blue space normality
+#
+png("histograms_bluespace.png", width = 1000, height = 1200)
+
+# Set plotting parameters
+par(mfrow = c(4, 2), mar = c(2, 2, 2, 1), cex.main =1.5)
+
+# Plot your histograms with titles
+hist(inland$total_blue, main = "1. Inland Blue Space")
+hist(log(inland$total_blue), main = "2. Log Inland Blue")
+hist(coastal$total_blue, main = "3. Coastal Blue Space")
+hist(log(coastal$total_blue), main = "4. Log of Coastal Blue Space")
+hist(estuarine$total_blue, main = "5. Estuarine Blue Space")
+hist(log(estuarine$total_blue), main = "6. Log of Estuarine Blue Space")
+hist(sqrt(estuarine$total_blue), main = "7. Square Root of Estuarine Blue Space")
+hist(sqrt(coastal$total_blue), main = "8. Square Root of Coastal Blue Space")
+
+# Close the PNG device
+dev.off()
+```
+
+```{r diagnostic plots greenspace}
+png("histograms_greenpace.png", width = 1000, height = 1200)
+
+# Set plotting parameters
+par(mfrow = c(4, 2), mar = c(2, 2, 2, 1), cex.main =1.5)
+
+# Check green space normality
+par(mfrow = c(3,2))
+hist(inland$total_green, main = "1. Inland Green Space")
+hist(log(inland$total_green), main = "2. Log of Inland Green Space")
+hist(coastal$total_green, main = "3. Coastal Green Space")
+hist(log(coastal$total_green), main = "4. Coastal Green Space")
+hist(estuarine$total_green, main = "5. Estuarine Green Space")
+hist(log(estuarine$total_green), main = "6. Estuarine Green Space")
+
+# Close the PNG device
+dev.off()
+```
+
+```{r diagnostic plots greyspace}
+png("histograms_greyspace.png", width = 1000, height = 1200)
+
+# Set plotting parameters
+par(mfrow = c(4, 2), mar = c(2, 2, 2, 1), cex.main =1.5)
+
+# Check green space normality
+par(mfrow = c(3,2))
+hist(inland$rel_built, main = "1. Inland Grey Space")
+hist(log(inland$rel_built), main = "2. Log of Inland Grey Space")
+hist(coastal$rel_built, main = "3. Coastal Grey Space")
+hist(log(coastal$rel_built), main = "4. Log of Coastal Grey Space")
+hist(estuarine$rel_built, main = "5. Estuarine Grey Space")
+hist(log(estuarine$rel_built), main = "6. Estuarine Grey Space")
+
+# Close the PNG device
+dev.off()
+```
+
+```{r diagnostic plots pop. counts}
+png("histograms_populationcounts.png", width = 1000, height = 1200)
+
+# Set plotting parameters
+par(mfrow = c(4, 2), mar = c(2, 2, 2, 1), cex.main =1.5)
+
+# Check green space normality
+par(mfrow = c(3,2))
+hist(inland$population_counts, main = "1. Inland Population Counts")
+hist(log(inland$population_counts), main = "2. Log of Inland Population Counts")
+hist(coastal$population_counts, main = "3. Coastal Population Counts")
+hist(log(coastal$population_counts), main = "4. Log of Coastal Population Counts")
+hist(estuarine$population_counts, main = "5. Estuarine Population Counts")
+hist(log(estuarine$population_counts), main = "6. Log of Estuarine Population Counts")
+
+# Close the PNG device
+dev.off()
+```
+
+```{r diagnostic plots area}
+png("histograms_bua.png", width = 1000, height = 1200)
+
+# Set plotting parameters
+par(mfrow = c(4, 2), mar = c(2, 2, 2, 1), cex.main =1.5)
+
+# Check green space normality
+par(mfrow = c(3,2))
+hist(inland$original_bua_area, main = "1. Inland BUA Size")
+hist(log(inland$original_bua_area), main = "2. Log of Inland BUA Size")
+hist(coastal$original_bua_area, main = "3. Coastal BUA Size")
+hist(log(coastal$original_bua_area), main = "4. Log of Coastal BUA Size")
+hist(estuarine$original_bua_area, main = "5. Estuarine Population BUA Size")
+hist(log(estuarine$original_bua_area), main = "6. Log of Estuarine BUA Size")
+
+# Close the PNG device
+dev.off()
+```
+
+```{r scatter plots}
+# Coastal
+# setup the range and aspect ratio so it can be square
+x_range <- range(log(coastal$original_bua_area), na.rm = TRUE)
+y_range <- range(coastal$total_blue, na.rm = TRUE)
+aspect_ratio <- diff(x_range) / diff(y_range)
+
+# Create the plot
+pc <- ggplot(coastal, aes(x = log(original_bua_area), y = total_blue)) +
+  geom_point(color = "#6495ED", size = 3, alpha = 0.8, show.legend = FALSE) +
+  labs(title = "Coastal **",
+       subtitle = "Spearman's Rank: RHO -0.33, p-value = 0.005",
+       x = "Log of Size (m²)",
+       y = "Blue Space %") +
+  theme_light() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10, b = 15 )),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10, l = 10)),
+      axis.text.x = element_text(size = 12),
+  axis.text.y = element_text(size = 12),
+    legend.position = "none") + 
+  coord_fixed(ratio = aspect_ratio)
+pc
+
+#
+ggsave("coastal_size.png", plot = pc, width = 6, height = 6, dpi = 300)
+
+# Inland
+x_range <- range(log(inland$original_bua_area), na.rm = TRUE)
+y_range <- range(log(inland$total_blue), na.rm = TRUE)
+aspect_ratio <- diff(x_range) / diff(y_range)
+# Create the scatter plot
+pi <- ggplot(inland, aes(x = log(original_bua_area), y = log(total_blue))) +
+ geom_point(color = "#FFA07A", size = 3, alpha = 0.6, show.legend = FALSE)  +
+  labs(title = "Inland **",
+       subtitle = "Spearman's Rank: RHO 0.15, p-value = 0.002",
+       x = "Log of Size (m²)",
+       y = "Log of Blue Space (%)") +
+  theme_light() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10, b = 15 )),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10, l = 10)),
+    legend.position = "none",
+      axis.text.x = element_text(size = 12),
+  axis.text.y = element_text(size = 12)) +
+  coord_fixed(ratio = aspect_ratio)
+pi
+
+#
+ggsave("inland_size.png", plot = pi, width = 6, height = 6, dpi = 300)
+
+# Estuarine
+x_range <- range(log(estuarine$original_bua_area), na.rm = TRUE)
+y_range <- range(log(estuarine$total_blue), na.rm = TRUE)
+aspect_ratio <- diff(x_range) / diff(y_range)
+# Create the scatter plot
+pe <- ggplot(estuarine, aes(x = log(original_bua_area), y = log(total_blue))) +
+ geom_point(color = "#95D8B5", size = 3, alpha = 2, show.legend = FALSE)  + 
+  labs(title = "Estuarine",
+       subtitle = "Spearman's Rank: RHO -0.12, p-value = 0.51",
+       x = "Log of Size (m²)",
+       y = "Log of Blue Space (%)") +
+  theme_light() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic"),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10, b = 15 )),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10, l = 10)),
+      axis.text.x = element_text(size = 12),
+  axis.text.y = element_text(size = 12),
+    legend.position = "none") +
+  coord_fixed(ratio = aspect_ratio)
+pe
+
+# combine plots
+
+combined_plot <- grid.arrange(pc ,pi, pe, ncol = 3)
+
+# Save the combined plot as a JPEG file
+ggsave("combined_scatter_plot.png", plot = combined_plot, width = 13, height = 6, dpi = 300)
+```
+
+## Deprivation data
+
+```{r sub-set england}
+# assign england to df_filtered
+df_filtered <- df_3[df_3$country == "england", ]
+
+```
+
+```{r diagnostics for deprivation variables}
+# Save plots to a PNG file
+png("model_variable_dist_v1.png", width = 6000, height = 2100, res = 300)
+
+# Set up a 7x3 layout and adjust text size
+par(mfrow = c(3,8), cex.main = 1.2, cex.lab = 1.2, cex.axis = 1.2, mar = c(4, 4, 2, 1))
+
+# List of variables to plot
+variables <- c("total_green", "total_blue", "imdd_weight_av", "shannon", "rel_built", "original_bua_area", "simpsons", "population_counts")
+
+# Function to log-transform variables if needed
+log_transform_if_needed <- function(var_name, df) {
+  if (var_name %in% c("total_blue", "original_bua_area")) {
+    return(log(df[[var_name]] + 1))  # Adding 1 to avoid log(0)
+  } else {
+    return(df[[var_name]])
+  }
+}
+
+# Plot histograms
+invisible(lapply(variables, function(var) {
+  hist(log_transform_if_needed(var, df_filtered),
+       main = paste("Histogram of", gsub("_", " ", var)),
+       xlab = gsub("_", " ", var),
+       col = "skyblue", border = "black")
+}))
+
+# Create boxplots
+invisible(lapply(variables, function(var) {
+  boxplot(log_transform_if_needed(var, df_filtered),
+          main = paste("Boxplot of", gsub("_", " ", var)),
+          xlab = gsub("_", " ", var),
+          col = "skyblue", border = "black")
+}))
+
+# Create Q-Q plots
+invisible(lapply(variables, function(var) {
+  qqnorm(log_transform_if_needed(var, df_filtered),
+         main = paste("Q-Q Plot of", gsub("_", " ", var)))
+  qqline(log_transform_if_needed(var, df_filtered), col = "red", lwd = 2)
+}))
+
+# Close the PNG device to save the file
+dev.off()
+
+
+```
+
+```{r correlation matrix}
+df_filtered
+
+# Calculate descriptive statistics
+descriptive_stats <- describe(df_filtered %>% dplyr::select(total_green, total_blue, imdd_weight_av, shannon, rel_built, simpsons))
+print(descriptive_stats)
+
+# Correlation matrix
+correlation_matrix <- cor(df_filtered %>% dplyr::select(total_green, total_blue, imdd_weight_av, shannon, rel_built, simpsons, original_bua_area, population_counts, long), use = "complete.obs", method = "spearman")
+print(correlation_matrix)
+
+# Visualize correlation matrix
+corr_plot <- ggcorrplot(correlation_matrix, lab = TRUE)
+print(corr_plot)
+
+# Plot of notable correlation observed with green space and rel built (this is not part of the analysis just a visualistion of the some of the variables)
+plot(df_filtered$rel_built, log(df_filtered$total_blue))
+plot(df_filtered$shannon, log(df_filtered$total_blue))
+plot(df_filtered$rel_built, df_filtered$total_green)
+#plot(df_filtered$rel_built, df_filtered$total_blue)
+```
+
+```{r correlation test}
+
+# Save plot to a PNG file with adjusted width and height for higher resolution
+png("model_plots_v1.png", width = 3600, height = 1350, res = 300)  # Adjusted dimensions for 300 DPI
+
+# Set up a 1x3 layout for the plots
+par(mfrow = c(1, 3), cex.main = 1.2, cex.lab = 1.3, cex.axis = 1.2, mar = c(5, 5, 4, 2))
+
+# Plot 1: Original BUA Area vs. Population Counts
+plot(df_3$original_bua_area, df_3$population_counts,
+     main = "Original BUA Area (metre sq.) vs. Pop. Counts (R=0.85)",
+     xlab = "Original BUA Area", 
+     ylab = "Population Counts",
+     pch = 16, col = "black")
+
+# Add the regression line
+lm1 <- lm(population_counts ~ original_bua_area, data = df_3)
+abline(lm1, col = "red", lwd = 2)
+
+# Plot 2: Total Green vs. Relative Built
+plot(df_3$total_green, df_3$rel_built,
+     main = "Total Green vs. Total Grey (R=0.82)",
+     xlab = "Total Green %", 
+     ylab = "Total Grey %",
+     pch = 16, col = "black")
+
+# Add the regression line
+lm2 <- lm(total_green ~ rel_built, data = df_3)
+abline(lm2, col = "red", lwd = 2)
+
+# Plot 3: Shannon vs. Simpsons
+plot(df_3$simpsons, df_3$shannon,
+     main = "Simpsons vs. Shannon (R=0.84)",
+     xlab = "Simpsons Index", 
+     ylab = "Shannon Index",
+     pch = 16, col = "black")
+
+# Add the regression line
+lm3 <- lm(shannon ~ simpsons, data = df_3)
+abline(lm3, col = "red", lwd = 2)
+
+# Close the PNG device
+dev.off()
+
+
+```
+
+```{r checking_vif}
+# Fit a lm to check for VIF (all predictor variables which will be used)
+model1 <- lm(imdd_weight_av ~ total_green + total_blue +
+             shannon + original_bua_area + long + lat, data = df_filtered)
+# summary(model1)
+
+model2 <- lm(imdd_weight_av ~ rel_built + total_blue +
+             shannon + population_counts + long + lat, data = df_filtered)
+# summary(model2)
+
+# assign and show values
+vif_values1 <- vif(model1)
+vif_values2 <- vif(model2)
+print(vif_values1)
+print(vif_values2)
+
+# All independent variables are within correlation, VIF limits and suitable for further analysis. 
+
+```
+
+```{r linearity exploration}
+# Dependent IMDD
+# green
+plot(df_filtered$total_green, df_filtered$imdd_weight_av)
+with(df_filtered, cor.test(total_green, imdd_weight_av))
+
+# blue
+plot((log(df_filtered$total_blue)), df_filtered$imdd_weight_av)
+with(df_filtered, cor.test(total_blue, imdd_weight_av, method = "spearman"))
+
+# shannon
+plot(df_filtered$shannon, df_filtered$imdd_weight_av)
+with(df_filtered, cor(shannon, imdd_weight_av))
+
+# size
+plot((log(df_filtered$original_bua_area)), df_filtered$imdd_weight_av)
+with(df_filtered, cor(original_bua_area, imdd_weight_av))
+
+# simpson
+plot((log(df_filtered$simpsons)), df_filtered$imdd_weight_av)
+with(df_filtered, cor(simpsons, imdd_weight_av))
+
+# grey
+plot(df_filtered$rel_built, df_filtered$imdd_weight_av)
+with(df_filtered, cor(rel_built, imdd_weight_av))
+
+# pop size
+plot((log(df_filtered$population_counts)), df_filtered$imdd_weight_av)
+with(df_filtered, cor(population_counts, imdd_weight_av))
+```
+## General Additive Models 
+
+After considering models types and examining the variables in the data set, a General Additive Model (GAM) was selected. This model was chosen as the dependent variable IMDD (Index of Mulitple Deprivation Decile) is normally distributed continuous data. However, the independent variables are combination of parametric and non-parametric data sets with varying degrees of linearity. GAM provides smoothing splines for non-linear variables and will incorporate categorical variables, making them suitable for mixed data (continuous and categorical variables). Various model permutations were compared to find the most explanatory, using variance explained, AIC and BIC.
+
+```{r base model}
+# fix naming error
+
+# Rename 'long' to temporary placeholder
+names(df_filtered)[names(df_filtered) == "long"] <- "temp_lat"
+
+# Rename 'lat' to 'long'
+names(df_filtered)[names(df_filtered) == "lat"] <- "long"
+
+# Rename placeholder to 'lat'
+names(df_filtered)[names(df_filtered) == "temp_lat"] <- "lat"
+
+
+df_filtered$class <- as.factor(df_filtered$class)
+
+gam_model1 <- gam(imdd_weight_av ~ total_green + s(log(total_blue)) + shannon + s(log(original_bua_area)) + class + lat + long, data = df_filtered, family = gaussian())
+
+#
+summary(gam_model1)
+gam.check(gam_model1)
+AIC(gam_model1)
+```
+
+base model - class and original bua
+```{r gam model two}
+gam_model2 <- gam(imdd_weight_av ~ total_green + s(log(total_blue)) + shannon + long, data = df_filtered, family = gaussian())
+
+#
+summary(gam_model2)
+gam.check(gam_model2)
+```
+smooth all existing independent variables in the model 
+```{r gam model three}
+# Predicted variables
+par(mfrow = c(2,2))
+hist(df_filtered$shannon)
+hist(df_filtered$total_green)
+hist(sqrt(df_filtered$shannon)) # best
+hist(df_filtered$simpsons) # best
+hist(sqrt(df_filtered$simpsons))
+
+# alternate between shannon/simpsons to explore best (simpsons better)
+gam_model3 <- gam(imdd_weight_av ~ s(total_green) + s(log(total_blue)) + s(simpsons) + s(lat), data = df_filtered, family = gaussian())
+summary(gam_model3)
+par(mfrow = c(2,2))
+plot(gam_model3, all.terms = TRUE)
+AIC(gam_model3) # 1495
+gam.check(gam_model3)
+
+gam_model4 <- gam(imdd_weight_av ~ s(total_green) + s(log(total_blue)) + s(shannon) + s(lat), data = df_filtered, family = gaussian())
+summary(gam_model4)
+par(mfrow = c(2,2))
+AIC(gam_model4) #1520
+
+
+# Thin plate # BEST MODEL
+gam_model3_tp <- gam(imdd_weight_av ~ s(total_green, k=9, bs="tp", fx=FALSE) + 
+                                      s(log(total_blue), bs="tp", k=9, fx=FALSE) + 
+                                      s(simpsons, k=9, bs="tp", fx=FALSE) +
+                                      s(lat, k=9, bs="tp", fx=FALSE),
+                  data = df_filtered, family = gaussian())
+summary(gam_model3_tp)
+par(mfrow = c(2,2))
+plot(gam_model3_tp)
+AIC(gam_model3_tp)
+
+# method reml = 1595
+# GCV = 1588
+
+# Cubic regression
+gam_model3_cr <- gam(imdd_weight_av ~ s(total_green, k=, bs="cr", fx=TRUE) + 
+                                      s(log(total_blue), bs="cr", k=9, fx=TRUE) + 
+                                      s(simpsons, k=9, bs="cr", fx=TRUE) +
+                                      s(lat, k=9, bs="cr", fx=FALSE),
+                                      data = df_filtered, family = gaussian())
+summary(gam_model3_cr)
+plot(gam_model3_cr)
+AIC(gam_model3_cr) # 1609
+
+# B splines
+gam_model3_bs <- gam(imdd_weight_av ~ s(total_green, k=9, bs="bs", fx=FALSE) + 
+                                      s(log(total_blue), bs="bs", k=9, fx=FALSE) + 
+                                      s(simpsons, k=9, bs="bs", fx=FALSE) +
+                                      s(lat, k=9, bs="bs", fx=FALSE),
+                  data = df_filtered, family = gaussian())
+summary(gam_model3_bs)
+par(mfrow = c(1,3))
+plot(gam_model3_bs)
+AIC(gam_model3_bs) # 1588
+
+```
+
+```{r alternative model}
+# alternative model with shannon (does not fit as well)
+gam_model3_alt_tp <- gam(imdd_weight_av ~ s(total_green, k=9, bs="tp", fx=FALSE) + 
+                                      s(log(total_blue), bs="tp", k=9, fx=FALSE) + 
+                                      s(shannon, k=9, bs="tp", fx=FALSE) +
+                                      s(lat, k=9, bs="tp", fx=FALSE),
+                  data = df_filtered, family = gaussian())
+summary(gam_model3_alt_tp)
+par(mfrow = c(2,2))
+plot(gam_model3_alt_tp)
+AIC(gam_model3_alt_tp)
+```
+
+
+```{r gam model export}
+library(mgcv)
+
+png(filename = "GAM_Plots.png", width = 3000, height = 3000, res = 300)  # Adjust size as needed
+
+# Set up the plotting parameters to affect all plots
+par(mfrow = c(2, 2),    # Arrange the plots in one row and three columns
+    cex.main = 1.3,     # Change the main title text size
+    cex.lab = 1.3,      # Change the axis labels text size
+    cex.axis = 1.5,     # Change the axis ticks text size
+    mgp = c(3, 1, 0),   # Set the margins for the title, labels, and axis line
+    mar = c(5, 4, 4, 2))# Set the margins around the plot
+
+# Assuming 'gam_model3' has at least three smooth terms, plot each separately
+plot(gam_model3_tp, select = 1, main = "", xlab = "Green Space (%)", ylab = "Effect")
+plot(gam_model3_tp, select = 2, main = "", xlab = "Blue Space (%)", ylab = "")
+plot(gam_model3_tp, select = 3, main = "", xlab = "Simpson's Diversity", ylab = "")
+plot(gam_model3_tp, select = 4, main = "", xlab = "Latitude", ylab = "")
+
+# Close the PNG device
+dev.off()
+
+# Reset par to default settings after plotting
+par(mfrow = c(1, 1), cex.main = 1, cex.lab = 1, cex.axis = 1, mgp = c(2, 1, 0), mar = c(5, 4, 4, 2))
+
+```
+
+
+```{r gam model 3 check}
+par(mfrow = c(2, 3)) # Adjust layout to fit all plots
+plot(gam_model3_tp, pages = 1)
+par(mfrow = c(1,1)) # Reset layout
+
+# Plot residuals
+plot(gam_model3_tp$residuals)
+AIC(gam_model3_tp) #1588
+BIC(gam_model3_tp) #1641
+summary(gam_model3_tp)
+par(mfrow = c(2,2))
+gam.check(gam_model3_tp)
+
+png("gam_check_output.png", width = 800, height = 800)
+
+par(mfrow = c(2, 2),            # 2x2 layout
+    cex.main = 1.5,             # Title size
+    cex.lab = 1.4,              # Axis labels
+    cex.axis = 1.3,             # Axis tick labels
+    cex = 1.3)                  # General text (e.g., point labels)
+
+gam.check(gam_model3_tp)
+
+dev.off()
+
+```
+
+```{r gam model sensitivity check}
+# Sensitivity analysis by varying the smoothing parameter 
+
+# Model 1: Lower k value (k=7)
+model1 <- gam(imdd_weight_av ~ s(total_green, k=7) + s(log(total_blue), k=7) + s(simpsons, k=7), data = df_filtered)
+summary(model1)
+
+# Model 2: Higher k value (k=15) (k can be changed)
+model2 <- gam(imdd_weight_av ~ s(total_green, k=15) + s(log(total_blue), k=15) + s(simpsons, k=15), data = df_filtered)
+summary(model2)
+
+# Compare the models
+summary(model1)
+summary(model2)
+
+# Generate predictions for both models
+predictions1 <- predict(model1, newdata = df_3)
+predictions2 <- predict(model2, newdata = df_3)
+
+# Plot to compare predictions
+par(mfrow = c(1, 1))
+
+png("k7_vs_k15_predictions.png", width = 800, height = 800, res = 150)
+
+plot(predictions1, predictions2, 
+     main = "k = 7 vs k = 15",
+     xlab = "Predictions with k = 7", 
+     ylab = "Predictions with k = 15",
+     cex.lab = 1.4,       # axis label size
+     cex.main = 1.5,      # title size
+     cex.axis = 1.3,      # tick label size
+     pch = 19, col = "black", size = 3)  # point style and color
+
+abline(0, 1, col = "red", lwd = 2)
+
+dev.off()
+
+
+# Compare the models
+summary(model1)
+summary(model2)
+
+```
+
+```{r model cross validation}
+# 
+set.seed(123)
+
+# Number of folds for cross-validation
+n_folds <- 10
+
+# Shuffle and create indices for the folds
+fold_indices <- sample(cut(seq(1, nrow(df_filtered)), breaks=n_folds, labels=FALSE))
+
+# Initialize an empty list
+cv_results <- vector("list", n_folds)
+
+# Cross-validation
+for (i in 1:n_folds) {
+  # Define training and test sets based on fold indices
+  training_set <- df_filtered[fold_indices != i,]
+  test_set <- df_filtered[fold_indices == i,]
+  
+  # Fit the GAM model using thin plate splines
+  gam_model <- gam(imdd_weight_av ~ s(total_green, k=9, bs="tp", fx=FALSE) + 
+                                      s(log(total_blue), bs="tp", k=9, fx=FALSE) + 
+                                      s(simpsons, k=9, bs="tp", fx=FALSE) +
+                                      s(lat, k=9, bs="tp", fx=FALSE), 
+                   data = training_set, family = gaussian())
+  
+  # Summary
+  summary(gam_model)# 
+  
+  # Predict on the test set
+  predictions <- predict(gam_model, newdata=test_set)
+  
+  # Calculate and store the RMSE for this fold
+  cv_results[[i]] <- sqrt(mean((test_set$imdd_weight_av - predictions)^2))
+}
+
+# Calculate the average RMSE across all folds
+average_rmse <- mean(unlist(cv_results))
+print(paste("Average RMSE from CV:", average_rmse))
+
+```

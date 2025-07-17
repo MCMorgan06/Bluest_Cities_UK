@@ -1,0 +1,501 @@
+name,200m_buff_area,class
+Aberdare,22267784,inland
+Aberdeen,82424058,coastal
+Abingdon-on-Thames,12038979,inland
+Accrington,11555426,inland
+Airdrie,13141864,inland
+Aldershot,11676494,inland
+Alloa,10539826,inland
+Altrincham,15264350,inland
+Amersham,12120536,inland
+Andover,19456283,inland
+Arbroath,14916715,coastal
+Arnold,12013217,inland
+Ascot,24353809,inland
+Ash and Ash Vale,12208518,inland
+Ashford (Ashford),31372627,inland
+Ashington (Northumberland),11811159,inland
+Ashton-in-Makerfield,11791670,inland
+Ashton-under-Lyne,13841323,inland
+Avonmouth,21929373,estuarine
+Aylesbury,23742220,inland
+Ayr,28200153,coastal
+Bamber Bridge,20054917,inland
+Banbury,20634365,inland
+Barking and Dagenham,40468895,inland
+Barnet,87112703,inland
+Barnsley,28290911,inland
+Barnstaple,16195359,inland
+Barrow-in-Furness,28355238,coastal
+Barry (Vale of Glamorgan),22261424,coastal
+Basildon,40923346,inland
+Basingstoke,39251546,inland
+Bath,34711729,inland
+Bathgate,13786799,inland
+Batley,16825324,inland
+Beaconsfield,11336503,inland
+Bearsden,12493959,inland
+Bebington,26703156,estuarine
+Bedford,33175140,inland
+Bedworth,11391808,inland
+Beeston (Broxtowe),19650472,inland
+Bellshill,10782020,inland
+Beverley,12447530,inland
+Bexhill-on-Sea,18468927,coastal
+Bexley,63433991,inland
+Bicester,16131505,inland
+Billericay,14801817,inland
+Billingham,19414987,inland
+Bilston (Wolverhampton),12155681,inland
+Birkenhead,34270878,estuarine
+Birmingham,257231936,inland
+Bishop Auckland,12394484,inland
+Bishop's Stortford,16828090,inland
+Blackburn (Blackburn with Darwen),42402723,inland
+Blackpool,47317789,coastal
+Bletchley,17741719,inland
+Bloxwich,15150229,inland
+Blyth (Northumberland),16668969,coastal
+Bognor Regis,23892184,coastal
+Bolton (Bolton),53827222,inland
+Bootle (Sefton),15800362,estuarine
+Borehamwood,12688885,inland
+Boston,24371889,inland
+Bournemouth,49032925,coastal
+Bracknell,25234940,inland
+Bradford,82456955,inland
+Braintree,16709873,inland
+Brent,50632624,inland
+Brentwood,24704935,inland
+Bridgend,22782235,inland
+Bridgwater,19981451,inland
+Bridlington,13496935,coastal
+Brierley Hill,11640615,inland
+Brighouse,18832840,inland
+Brighton and Hove,60290262,coastal
+Bristol,93513362,inland
+Broadstairs,12642777,coastal
+Bromley,117988973,inland
+Bromsgrove,14167156,inland
+Burgess Hill,13811974,inland
+Burnley,26311985,inland
+Burntwood,12024689,inland
+Burton End,12545701,inland
+Burton upon Trent,38793294,inland
+Bury (Bury),32337610,inland
+Bury St Edmunds,22325888,inland
+Bushey,12589953,inland
+Byfleet,13391206,inland
+Caerphilly,14109888,inland
+Camberley,17750635,inland
+Cambridge (Cambridge),46482284,inland
+Cambuslang,16286675,inland
+Camden,25320425,inland
+Cannock,25089490,inland
+Canterbury,22730165,inland
+Canvey Island,13192078,estuarine
+Cardiff,99510764,coastal
+Carlisle,33230134,inland
+Carlton (Gedling),22206393,inland
+Carterton,11831569,inland
+Castleford,18891552,inland
+Caterham,11671056,inland
+Catterick Garrison,14036694,inland
+Caversham,12136596,inland
+Chadderton,13119946,inland
+Chafford Hundred and West Thurrock,12425237,estuarine
+Chandler's Ford,14154366,inland
+Chatham,21529973,estuarine
+Chelmsford,37301977,inland
+Cheltenham,37035615,inland
+Cheshunt,13883106,inland
+Chester,37599285,inland
+Chester-le-Street,11003297,inland
+Chesterfield,36978200,inland
+Chichester,14464014,inland
+Chippenham (Wiltshire),14694831,inland
+Chorley,15490928,inland
+Chorleywood,12518116,inland
+"Christchurch (Bournemouth, Christchurch and Poole)",22806096,coastal
+City of Westminster,25324391,inland
+Clacton-on-Sea,19961980,coastal
+Clydebank,17785038,inland
+Coalville,11611759,inland
+Coatbridge,16542250,inland
+Cobham (Elmbridge),15431312,inland
+Colchester,47921263,inland
+Colwyn Bay,15984479,coastal
+Congleton,16274091,inland
+Consett,14919147,inland
+Corby,34326170,inland
+Coventry,104642339,inland
+Cramlington,15200684,inland
+Crawley (Crawley),35402943,inland
+Crewe,27878110,inland
+Crosby (Sefton),16618778,coastal
+Crowborough,15864046,inland
+Croydon,90334468,inland
+Cumbernauld,28593623,inland
+Cwmbrân,21027798,inland
+Darlington,34420368,inland
+Dartford,23989472,inland
+Darwen,11115765,inland
+Daventry,13872309,inland
+Denton (Tameside),11629571,inland
+Derby,86221829,inland
+Dereham,11063500,inland
+Dewsbury,25301906,inland
+Didcot,13436209,inland
+Doncaster,40743796,inland
+Dover,17276895,coastal
+Droitwich Spa,11553286,inland
+Dudley (Dudley),21674198,inland
+Dumfries,20206769,inland
+Dundee,46487293,estuarine
+Dunfermline,25205586,inland
+Dunstable,9878432,inland
+Durham,24669602,inland
+Ealing,62030305,inland
+East Grinstead,13965296,inland
+East Kilbride,31502095,inland
+Eastbourne,29037074,coastal
+Eastleigh,21128291,inland
+Ebbw Vale,13779261,inland
+Eccles (Salford),12899761,inland
+Edinburgh,126291281,coastal
+Egham,11712653,inland
+Elgin,15631060,inland
+Ellesmere Port,38167112,estuarine
+Enfield,69268261,inland
+Epsom,13680234,inland
+Eston,12562869,inland
+Evesham,12622301,inland
+Ewell,11769807,inland
+Exeter,43188881,inland
+Exmouth,15314672,coastal
+Falkirk,14543391,inland
+Fareham,18255838,coastal
+Farnborough,26013797,inland
+Farnham,13767242,inland
+Felixstowe,10097723,coastal
+Fleet,17262273,inland
+Fleetwood,11017520,coastal
+Folkestone,18564224,coastal
+Formby,11819338,coastal
+Frome,10830744,inland
+Fulwood,13732862,inland
+Gainsborough,10983662,inland
+Gateshead,39488056,inland
+Gillingham (Medway),30970821,estuarine
+Glasgow,178658045,inland
+Glenrothes,23847853,inland
+Gloucester,36208177,inland
+Golborne,11364445,inland
+Gosport,22628990,coastal
+Grangemouth,8370558,estuarine
+Grantham,20885853,inland
+Gravesend,15038057,estuarine
+Grays,12623015,estuarine
+Great Bookham and Fetcham,14952566,inland
+Great Malvern,19775892,inland
+Great Yarmouth,12678927,coastal
+Greenock,16714795,inland
+Greenwich,53104377,inland
+Grimsby,27340070,estuarine
+Guildford,29169504,inland
+Hackney,22964644,inland
+Hale (Trafford),19502087,inland
+Halesowen,20710608,inland
+Halifax,32235839,inland
+Hamilton,20710753,inland
+Hammersmith and Fulham,20600887,inland
+Haringey,34608872,inland
+Harlow,31508064,inland
+Harpenden,15558335,inland
+Harrogate,29325464,inland
+Harrow,52379867,inland
+Hartlepool,38223984,coastal
+Haslemere,15030990,inland
+Hastings,31599526,coastal
+Hatfield,11977368,inland
+Havant,16636130,coastal
+Haverhill,12122193,inland
+Havering,76304508,inland
+Haywards Heath,15403165,inland
+Hazlemere,12546251,inland
+Heanor,11157228,inland
+Hemel Hempstead,33683568,inland
+Hereford,26204100,inland
+Hertford,12088123,inland
+Heswall,16675485,estuarine
+Heywood,12985832,inland
+High Wycombe,26057143,inland
+Hillingdon,96151846,inland
+Hilton (Eden),21264117,inland
+Hinckley,20903582,inland
+Hitchin,11889200,inland
+Hoddesdon,16744518,inland
+Holbury,3723528,inland
+Hookwood,11563412,inland
+Horley (Reigate and Banstead),11317554,inland
+Horndean,14328817,inland
+Horsham,16636834,inland
+Horwich,11601371,inland
+Hounslow,57692851,inland
+Hucknall,13664309,inland
+Huddersfield,52903499,inland
+Humberston and New Waltham,11789793,estuarine
+Huntingdon,11154911,inland
+Huyton with Roby,18659935,inland
+Hyde (Tameside),12425110,inland
+Ilkeston,15107832,inland
+Immingham,4575704,estuarine
+Inverness,31180744,estuarine
+Ipswich,51642159,inland
+Irvine,18138181,inland
+Islington,18750169,inland
+Jarrow,13348089,inland
+Keighley,18611087,inland
+Kendal,12794268,inland
+Kenilworth,12766390,inland
+Kensington and Chelsea,15621505,inland
+Kettering,23995472,inland
+Kidderminster,22159780,inland
+Kilmarnock,22412771,inland
+King's Lynn,24551824,inland
+Kingston upon Hull,80420377,estuarine
+Kingston upon Thames,37022606,inland
+Kingswinford,17888567,inland
+Kingswood and Fishponds,45438856,inland
+Kirkby,21468512,inland
+Kirkcaldy,24205282,coastal
+Kirkintilloch,13547699,inland
+Knowle and Dorridge,12956988,inland
+Lambeth,32964304,inland
+Lancaster,18240688,inland
+Lancing and Sompting,12776511,coastal
+Larbert and Stenhousemuir,12616376,inland
+Larkfield,13220122,inland
+Lee-on-the-Solent,11918006,coastal
+Leeds,152758251,inland
+Leicester,92132020,inland
+Leigh (Wigan),16218948,inland
+Leighton Buzzard,15353306,inland
+Letchworth,14043198,inland
+Lewisham,40618899,inland
+Leyland,17711137,inland
+Lichfield,13696090,inland
+Lincoln,35183962,inland
+Little Hulton,10251555,inland
+Liverpool,129219419,estuarine
+Livingston,35556413,inland
+Llanelli,21769240,estuarine
+Locks Heath,20456322,coastal
+Long Eaton,14471554,inland
+Longbenton,11835553,inland
+Loughborough,21949538,inland
+Loughton,10551009,inland
+Lowestoft,29387254,coastal
+Luton,52015971,inland
+Lytham St Anne's,18066834,coastal
+Macclesfield,21917306,inland
+Maidenhead,26639450,inland
+Maidstone,38062850,inland
+Maldon,13493828,estuarine
+Manchester,91587301,inland
+Mansfield,26565786,inland
+March,11904401,inland
+Margate,23419227,coastal
+Market Harborough,11898429,inland
+Melton Mowbray,13753736,inland
+Merthyr Tydfil,20616541,inland
+Merton,39015794,inland
+Middlesbrough,54624382,inland
+Middleton (Rochdale),13932637,inland
+Mildenhall (West Suffolk),11443316,inland
+Milford Haven,7516556,coastal
+Milton Keynes,84140718,inland
+Morecambe,11325148,coastal
+Morley (Leeds),13075649,inland
+Motherwell,19871630,inland
+Neath,22293698,inland
+"New Haw, West Byfleet and Sheerwater",19480284,inland
+Newark-on-Trent,15577506,inland
+Newbury,20915564,inland
+Newcastle upon Tyne,75957898,inland
+Newcastle-under-Lyme,30237495,inland
+Newham,41211310,inland
+Newmarket,10869611,inland
+Newport (Isle of Wight),13557511,inland
+Newport (Newport),61048414,estuarine
+Newquay,12729615,coastal
+Newton Abbot,12683734,inland
+Newton Aycliffe,15574272,inland
+Newton Mearns,13477738,inland
+Normanton (Wakefield),12677612,inland
+North Killingholme,18908291,estuarine
+Northampton,81270818,inland
+Norwich,71481925,inland
+Nottingham,72001527,inland
+Nuneaton,30695226,inland
+Old Trafford,16185415,inland
+Oldbury (Sandwell),14585986,inland
+Oldham,24975580,inland
+Ormskirk,12548157,inland
+Oxford,50360444,inland
+Paignton,25781924,coastal
+Paisley,29266153,inland
+Penarth,11155013,coastal
+Perth,24439306,inland
+Peterborough,67726831,inland
+Peterhead,13432283,coastal
+Peterlee,12676658,inland
+Plymouth,83986605,coastal
+Pontefract,13152060,inland
+Pontypool,15404071,inland
+Pontypridd,16522961,inland
+Poole,53090988,coastal
+Port Talbot,25148164,coastal
+Portsmouth,49143105,coastal
+Prescot,13269134,inland
+Preston (Preston),29290166,inland
+Prestwick,12693315,coastal
+Pudsey,13370875,inland
+Ramsgate,12126947,coastal
+Rawtenstall,15801163,inland
+Rayleigh,14615126,inland
+Reading,55580289,inland
+Redbridge,53093792,inland
+Redcar,12996344,coastal
+Redditch,35567855,inland
+Redhill (Reigate and Banstead),12222936,inland
+Reigate,12719737,inland
+Renfrew,16173307,inland
+Retford,11801734,inland
+Rhyl,10025420,coastal
+Richmond upon Thames,46254473,inland
+Rickmansworth,13350559,inland
+Ripley (Amber Valley),12183925,inland
+Rochdale,35132603,inland
+Rochester,23237085,estuarine
+Rotherham,32868211,inland
+Rowley Regis,12010688,inland
+Royal Leamington Spa,14239594,inland
+Royal Sutton Coldfield,37934019,inland
+Royal Tunbridge Wells,19333748,inland
+Rugby,38277443,inland
+Rugeley,12045813,inland
+Runcorn,33041914,estuarine
+Rushden,12914650,inland
+Rustington,17263287,coastal
+Sale,17759920,inland
+Salford,25067901,inland
+Salisbury,21384578,inland
+Scarborough,27140944,coastal
+Scunthorpe,41544011,inland
+Seaford,10152159,coastal
+Sedgley,12326332,inland
+Sevenoaks,18375037,inland
+Sheffield,149979713,inland
+Shrewsbury,34046339,inland
+Sittingbourne,22495944,inland
+Skegness,13465710,coastal
+Skelmersdale,18345799,inland
+Slough,39883883,inland
+Smethwick,12646074,inland
+Solihull,43688409,inland
+South Shields,21314361,coastal
+Southampton,60512663,estuarine
+Southend-on-Sea,47278861,estuarine
+Southport,37527033,coastal
+Southwark,35124195,inland
+Spalding,14935883,inland
+St Albans,24481701,inland
+St Austell,11255125,inland
+St Helens (St. Helens),40902588,inland
+St Neots,13716909,inland
+Stafford,33633782,inland
+Staines-upon-Thames,12432907,inland
+Stanford-le-Hope,8953203,estuarine
+Stevenage,28361881,inland
+Stirling,20720699,inland
+Stockport,32993724,inland
+Stockton-on-Tees,31666124,inland
+Stoke-on-Trent,96424422,inland
+Stourbridge,19639589,inland
+Stowmarket,10885172,inland
+Stratford-upon-Avon,15181319,inland
+Stratton St Margaret,13046819,inland
+Stroud,14255111,inland
+Sudbury,12739891,inland
+Sunderland,56763065,coastal
+Sutton (Sutton),48654888,inland
+Sutton in Ashfield,16888661,inland
+Swadlincote,14848597,inland
+Swansea,75331573,coastal
+Swindon (Swindon),55963635,inland
+Tadworth and Epsom Downs,14704502,inland
+Tamworth,29451197,inland
+Taunton,24260978,inland
+Telford,82633073,inland
+Thetford,11306568,inland
+Thornaby-on-Tees,11827035,inland
+Thundersley and South Benfleet,21311572,inland
+Tilbury,3576674,estuarine
+Tipton,13302687,inland
+Tonbridge,16258552,inland
+Torquay,19849963,coastal
+Totton,12223606,inland
+Tower Hamlets,26240600,inland
+Trowbridge,15895825,inland
+Truro,13069823,inland
+Tynemouth,22564747,coastal
+Urmston,13952079,inland
+Wakefield,42171027,inland
+Wallasey,25922657,coastal
+Wallsend,14517394,inland
+Walsall,20643232,inland
+Waltham Forest,38181957,inland
+Wandsworth,38995369,inland
+Warrington,71549666,inland
+Warwick,18243835,inland
+Washington,25772089,inland
+Waterlooville,13321281,inland
+Watford (Watford),34508431,inland
+Wath upon Dearne,12080054,inland
+Wellingborough,22409882,inland
+Welwyn Garden City,19718109,inland
+West Bridgford,11876714,inland
+West Bromwich,31614597,inland
+West Molesey,18133803,inland
+Weston-super-Mare,27301094,coastal
+Weymouth,28878797,coastal
+Whitehaven,12961127,coastal
+Whitley Bay,11074174,coastal
+Whitstable,16410917,coastal
+Wickersley and Bramley,11577317,inland
+Widnes,30113990,estuarine
+Wigan,27344139,inland
+Wigston,11858292,inland
+Willenhall,16010045,inland
+Willerby and Anlaby,10357807,inland
+Wilmslow,14651275,inland
+Winchester,20744059,inland
+Windsor,11941616,inland
+Winsford,16579760,inland
+Wisbech,15235135,inland
+Wishaw,14075339,inland
+Witham,10871552,inland
+Witney,12114989,inland
+Woking,28489497,inland
+Wokingham,25935724,inland
+Wolverhampton,75549638,inland
+Worcester,37103874,inland
+Workington,12222072,coastal
+Worksop,21196193,inland
+Worthing,29524291,coastal
+Wrexham,17446700,inland
+Wythenshawe,32236678,inland
+Yate,12701584,inland
+Yeovil,19579469,inland
+York,42388081,inland

@@ -1,0 +1,501 @@
+name,imdd_weight_av,country
+Aberdare,4.044614285,wales
+Aberdeen,6.702672337,scotland
+Abingdon-on-Thames,8.585435205,england
+Accrington,3.159104091,england
+Airdrie,3.861954659,scotland
+Aldershot,5.785151632,england
+Alloa,4.00118558,scotland
+Altrincham,8.058168326,england
+Amersham,9.313024233,england
+Andover,6.744090275,england
+Arbroath,5.338125195,scotland
+Arnold,6.890968799,england
+Ascot,9.765935664,england
+Ash and Ash Vale,7.859280808,england
+Ashford (Ashford),5.970429847,england
+Ashington (Northumberland),4.219874107,england
+Ashton-in-Makerfield,5.618520996,england
+Ashton-under-Lyne,2.692646196,england
+Avonmouth,5.909134742,england
+Aylesbury,6.746402541,england
+Ayr,5.6884935,scotland
+Bamber Bridge,6.436915011,england
+Banbury,5.672419672,england
+Barking and Dagenham,2.688254733,england
+Barnet,6.647644167,england
+Barnsley,3.259674154,england
+Barnstaple,5.449015033,england
+Barrow-in-Furness,4.103389636,england
+Barry (Vale of Glamorgan),5.322325136,wales
+Basildon,3.716734811,england
+Basingstoke,6.717665525,england
+Bath,8.15008351,england
+Bathgate,5.78999313,scotland
+Batley,3.46590628,england
+Beaconsfield,9.572060154,england
+Bearsden,9.386402409,scotland
+Bebington,5.950517791,england
+Bedford,5.456187204,england
+Bedworth,4.09950314,england
+Beeston (Broxtowe),7.932639641,england
+Bellshill,5.213028175,scotland
+Beverley,8.093893105,england
+Bexhill-on-Sea,5.852159333,england
+Bexley,6.433522585,england
+Bicester,7.554539486,england
+Billericay,9.035610511,england
+Billingham,3.931263986,england
+Bilston (Wolverhampton),1.819130063,england
+Birkenhead,3.211015198,england
+Birmingham,2.813089177,england
+Bishop Auckland,3.292972756,england
+Bishop's Stortford,9.222189347,england
+Blackburn (Blackburn with Darwen),3.934307051,england
+Blackpool,3.15294643,england
+Bletchley,4.455317245,england
+Bloxwich,1.998227299,england
+Blyth (Northumberland),3.207737148,england
+Bognor Regis,6.102991085,england
+Bolton (Bolton),4.357166509,england
+Bootle (Sefton),1.928431026,england
+Borehamwood,5.853799484,england
+Boston,5.495478156,england
+Bournemouth,5.650075486,england
+Bracknell,7.321946572,england
+Bradford,2.485350808,england
+Braintree,5.797914268,england
+Brent,4.224770661,england
+Brentwood,8.257401663,england
+Bridgend,7.120221708,wales
+Bridgwater,4.392035464,england
+Bridlington,3.958234723,england
+Brierley Hill,3.728728939,england
+Brighouse,5.74081538,england
+Brighton and Hove,5.925459643,england
+Bristol,4.687712278,england
+Broadstairs,6.665250124,england
+Bromley,7.504492346,england
+Bromsgrove,7.004090595,england
+Burgess Hill,8.703985258,england
+Burnley,3.313787517,england
+Burntwood,6.804489214,england
+Burton End,6.677991032,england
+Burton upon Trent,5.784876992,england
+Bury (Bury),4.970664799,england
+Bury St Edmunds,7.063136188,england
+Bushey,7.97718104,england
+Byfleet,8.110171442,england
+Caerphilly,5.71224291,wales
+Camberley,8.326214103,england
+Cambridge (Cambridge),6.857529909,england
+Cambuslang,5.789362169,scotland
+Camden,5.677409424,england
+Cannock,5.464996608,england
+Canterbury,6.492075273,england
+Canvey Island,4.292372337,england
+Cardiff,6.204707235,wales
+Carlisle,5.317494339,england
+Carlton (Gedling),6.714261237,england
+Carterton,8.193336129,england
+Castleford,3.513980234,england
+Caterham,8.082221222,england
+Catterick Garrison,7.427331957,england
+Caversham,8.819403858,england
+Chadderton,4.862258957,england
+Chafford Hundred and West Thurrock,5.068660545,england
+Chandler's Ford,9.329517994,england
+Chatham,4.987881399,england
+Chelmsford,7.558990463,england
+Cheltenham,7.496961691,england
+Cheshunt,5.63692529,england
+Chester,6.625901164,england
+Chester-le-Street,6.871952382,england
+Chesterfield,5.13324371,england
+Chichester,6.74655848,england
+Chippenham (Wiltshire),7.642614414,england
+Chorley,5.480670811,england
+Chorleywood,9.573332367,england
+"Christchurch (Bournemouth, Christchurch and Poole)",7.963035572,england
+City of Westminster,6.035008374,england
+Clacton-on-Sea,2.961411064,england
+Clydebank,3.375609589,scotland
+Coalville,5.813588285,england
+Coatbridge,3.641889999,scotland
+Cobham (Elmbridge),9.225599417,england
+Colchester,6.184180131,england
+Colwyn Bay,6.33426786,wales
+Congleton,7.273239891,england
+Consett,4.764520502,england
+Corby,4.292891923,england
+Coventry,5.101483632,england
+Cramlington,4.694334221,england
+Crawley (Crawley),5.656500868,england
+Crewe,5.553967413,england
+Crosby (Sefton),4.683341167,england
+Crowborough,8.937909448,england
+Croydon,5.877830851,england
+Cumbernauld,6.086786634,scotland
+Cwmbrân,5.605339546,wales
+Darlington,5.141027211,england
+Dartford,5.157408694,england
+Darwen,3.454092589,england
+Daventry,5.742441375,england
+Denton (Tameside),3.849338617,england
+Derby,5.127176654,england
+Dereham,5.323750379,england
+Dewsbury,2.987180878,england
+Didcot,8.128423938,england
+Doncaster,3.663533915,england
+Dover,3.985339762,england
+Droitwich Spa,6.348343799,england
+Dudley (Dudley),2.521514248,england
+Dumfries,5.579838204,scotland
+Dundee,4.706626964,scotland
+Dunfermline,6.973325731,scotland
+Dunstable,6.003288812,england
+Durham,7.739488194,england
+Ealing,4.746536705,england
+East Grinstead,9.181737184,england
+East Kilbride,6.24770455,scotland
+Eastbourne,5.455828789,england
+Eastleigh,7.494476057,england
+Ebbw Vale,4.185363688,wales
+Eccles (Salford),2.795831688,england
+Edinburgh,7.176828669,scotland
+Egham,7.769634718,england
+Elgin,6.37264031,scotland
+Ellesmere Port,4.184335745,england
+Enfield,4.631112435,england
+Epsom,8.172271141,england
+Eston,2.735283321,england
+Evesham,6.051795536,england
+Ewell,9.141237975,england
+Exeter,6.952931692,england
+Exmouth,6.768596972,england
+Falkirk,5.754268853,scotland
+Fareham,7.745001065,england
+Farnborough,7.583461451,england
+Farnham,9.273289331,england
+Felixstowe,5.910434258,england
+Fleet,9.804617684,england
+Fleetwood,3.214069989,england
+Folkestone,4.752546324,england
+Formby,8.580316793,england
+Frome,6.203159068,england
+Fulwood,6.579208636,england
+Gainsborough,2.509276149,england
+Gateshead,3.31598608,england
+Gillingham (Medway),6.108846816,england
+Glasgow,4.142768329,scotland
+Glenrothes,5.232506992,scotland
+Gloucester,5.339298708,england
+Golborne,5.817111193,england
+Gosport,5.506260514,england
+Grangemouth,4.90651767,scotland
+Grantham,6.324153091,england
+Gravesend,5.05839224,england
+Grays,5.792503343,england
+Great Bookham and Fetcham,9.237612151,england
+Great Malvern,6.83632411,england
+Great Yarmouth,1.555844916,england
+Greenock,3.367995266,scotland
+Greenwich,4.318040693,england
+Grimsby,4.012581253,england
+Guildford,8.617202331,england
+Hackney,2.749343959,england
+Hale (Trafford),6.425677717,england
+Halesowen,6.052840344,england
+Halifax,3.707471153,england
+Hamilton,5.050343739,scotland
+Hammersmith and Fulham,4.64152225,england
+Haringey,4.270977231,england
+Harlow,5.01337701,england
+Harpenden,9.516124182,england
+Harrogate,8.220425954,england
+Harrow,6.884648577,england
+Hartlepool,4.017069916,england
+Haslemere,9.220931389,england
+Hastings,3.829929179,england
+Hatfield,6.072799982,england
+Havant,4.451763557,england
+Haverhill,5.31824047,england
+Havering,6.286747739,england
+Haywards Heath,9.332588745,england
+Hazlemere,9.952268518,england
+Heanor,4.421089262,england
+Hemel Hempstead,6.380004185,england
+Hereford,5.727542639,england
+Hertford,8.80974029,england
+Heswall,8.430968726,england
+Heywood,3.535372314,england
+High Wycombe,6.938160353,england
+Hillingdon,6.025331782,england
+Hilton (Eden),4.003341893,england
+Hinckley,7.381028083,england
+Hitchin,8.199854719,england
+Hoddesdon,6.588099983,england
+Holbury,6.592161149,england
+Hookwood,4.36983195,england
+Horley (Reigate and Banstead),7.583576576,england
+Horndean,8.328945722,england
+Horsham,8.360395568,england
+Horwich,6.048631366,england
+Hounslow,4.788501327,england
+Hucknall,4.46014909,england
+Huddersfield,4.08227035,england
+Humberston and New Waltham,7.871765456,england
+Huntingdon,5.899569425,england
+Huyton with Roby,2.773263308,england
+Hyde (Tameside),3.602610821,england
+Ilkeston,4.625365542,england
+Immingham,4.081736784,england
+Inverness,5.669569983,scotland
+Ipswich,5.257754712,england
+Irvine,3.623053921,scotland
+Islington,3.731501808,england
+Jarrow,2.228519006,england
+Keighley,3.28435099,england
+Kendal,7.470666712,england
+Kenilworth,9.009163777,england
+Kensington and Chelsea,5.637288267,england
+Kettering,5.653241039,england
+Kidderminster,4.996280365,england
+Kilmarnock,4.775043921,scotland
+King's Lynn,4.38805798,england
+Kingston upon Hull,3.002950417,england
+Kingston upon Thames,7.734569629,england
+Kingswinford,6.557092805,england
+Kingswood and Fishponds,6.618387328,england
+Kirkby,1.968755415,england
+Kirkcaldy,4.504953608,scotland
+Kirkintilloch,6.328204508,scotland
+Knowle and Dorridge,9.368526666,england
+Lambeth,4.109202697,england
+Lancaster,5.273147091,england
+Lancing and Sompting,5.307235558,england
+Larbert and Stenhousemuir,6.647801696,scotland
+Larkfield,6.833818784,england
+Lee-on-the-Solent,8.644852497,england
+Leeds,4.126195851,england
+Leicester,4.410183868,england
+Leigh (Wigan),3.497685533,england
+Leighton Buzzard,7.745292062,england
+Letchworth,6.644892593,england
+Lewisham,3.80562024,england
+Leyland,6.033220765,england
+Lichfield,7.43137462,england
+Lincoln,4.853479169,england
+Little Hulton,2.173862826,england
+Liverpool,2.815906526,england
+Livingston,5.838666171,scotland
+Llanelli,4.348769373,wales
+Locks Heath,8.825232911,england
+Long Eaton,6.486560524,england
+Longbenton,5.414646017,england
+Loughborough,6.720050533,england
+Loughton,6.671055848,england
+Lowestoft,4.419939111,england
+Luton,4.982090774,england
+Lytham St Anne's,6.518010091,england
+Macclesfield,6.492306155,england
+Maidenhead,8.657106277,england
+Maidstone,6.53406553,england
+Maldon,6.863156351,england
+Manchester,2.386613029,england
+Mansfield,4.525319307,england
+March,4.162273885,england
+Margate,3.996108968,england
+Market Harborough,8.147368218,england
+Melton Mowbray,7.316487184,england
+Merthyr Tydfil,3.704121117,wales
+Merton,7.034825969,england
+Middlesbrough,3.636868902,england
+Middleton (Rochdale),3.545265218,england
+Mildenhall (West Suffolk),5.561555519,england
+Milford Haven,3.826158155,wales
+Milton Keynes,6.378146318,england
+Morecambe,3.816818269,england
+Morley (Leeds),4.819784109,england
+Motherwell,4.896116062,scotland
+Neath,5.413968322,wales
+"New Haw, West Byfleet and Sheerwater",8.49243504,england
+Newark-on-Trent,4.296305947,england
+Newbury,7.838835945,england
+Newcastle upon Tyne,4.583803576,england
+Newcastle-under-Lyme,5.414068116,england
+Newham,2.970786532,england
+Newmarket,6.138920965,england
+Newport (Isle of Wight),4.37754055,england
+Newport (Newport),4.268353259,wales
+Newquay,4.838305439,england
+Newton Abbot,5.82460293,england
+Newton Aycliffe,4.115076354,england
+Newton Mearns,8.711578679,scotland
+Normanton (Wakefield),4.99594357,england
+North Killingholme,4.029503551,england
+Northampton,5.484550313,england
+Norwich,5.822072207,england
+Nottingham,3.558729628,england
+Nuneaton,5.436251442,england
+Old Trafford,4.583157188,england
+Oldbury (Sandwell),2.834041239,england
+Oldham,1.873410557,england
+Ormskirk,8.209458737,england
+Oxford,6.770188332,england
+Paignton,5.152864625,england
+Paisley,4.70922682,scotland
+Penarth,8.657934422,wales
+Perth,6.26567381,scotland
+Peterborough,4.196900315,england
+Peterhead,6.40829243,scotland
+Peterlee,3.121358057,england
+Plymouth,4.806477942,england
+Pontefract,4.253648014,england
+Pontypool,5.010351949,wales
+Pontypridd,4.511990779,wales
+Poole,6.859236686,england
+Port Talbot,3.927797672,wales
+Portsmouth,4.908098006,england
+Prescot,4.391274511,england
+Preston (Preston),3.260108672,england
+Prestwick,6.904863929,scotland
+Pudsey,5.869387589,england
+Ramsgate,2.998531669,england
+Rawtenstall,5.170978067,england
+Rayleigh,8.75648008,england
+Reading,6.523067746,england
+Redbridge,6.109273976,england
+Redcar,4.404215241,england
+Redditch,5.531132768,england
+Redhill (Reigate and Banstead),7.616764028,england
+Reigate,8.695446482,england
+Renfrew,5.801112513,scotland
+Retford,5.424171075,england
+Rhyl,3.625875317,wales
+Richmond upon Thames,8.141330129,england
+Rickmansworth,9.257008027,england
+Ripley (Amber Valley),5.733368791,england
+Rochdale,3.382585175,england
+Rochester,5.228567308,england
+Rotherham,2.926598704,england
+Rowley Regis,3.324010906,england
+Royal Leamington Spa,6.808647303,england
+Royal Sutton Coldfield,7.376302898,england
+Royal Tunbridge Wells,8.16437204,england
+Rugby,6.867409336,england
+Rugeley,5.719594658,england
+Runcorn,4.075382233,england
+Rushden,6.820179802,england
+Rustington,7.444509331,england
+Sale,7.55767533,england
+Salford,2.651429942,england
+Salisbury,6.663739233,england
+Scarborough,4.642005841,england
+Scunthorpe,4.32616976,england
+Seaford,7.337291225,england
+Sedgley,5.92830797,england
+Sevenoaks,8.986393072,england
+Sheffield,4.510026371,england
+Shrewsbury,6.950394588,england
+Sittingbourne,4.920673654,england
+Skegness,2.038740637,england
+Skelmersdale,3.908519825,england
+Slough,5.075138016,england
+Smethwick,2.212052961,england
+Solihull,7.868305693,england
+South Shields,3.266507443,england
+Southampton,4.482484585,england
+Southend-on-Sea,5.825888232,england
+Southport,5.492077154,england
+Southwark,4.379505314,england
+Spalding,6.812633292,england
+St Albans,8.428581934,england
+St Austell,4.681012195,england
+St Helens (St. Helens),3.085596994,england
+St Neots,7.203146448,england
+Stafford,6.891761634,england
+Staines-upon-Thames,7.578578267,england
+Stanford-le-Hope,6.234803907,england
+Stevenage,5.31732893,england
+Stirling,6.010270401,scotland
+Stockport,4.566278958,england
+Stockton-on-Tees,3.913799644,england
+Stoke-on-Trent,3.376721651,england
+Stourbridge,5.860554624,england
+Stowmarket,7.000878572,england
+Stratford-upon-Avon,7.57233556,england
+Stratton St Margaret,7.084095415,england
+Stroud,7.064165357,england
+Sudbury,5.905856629,england
+Sunderland,3.609146256,england
+Sutton (Sutton),7.476086261,england
+Sutton in Ashfield,4.198387999,england
+Swadlincote,5.717606651,england
+Swansea,5.588206945,wales
+Swindon (Swindon),6.147575195,england
+Tadworth and Epsom Downs,8.848624372,england
+Tamworth,5.46206688,england
+Taunton,6.233433641,england
+Telford,4.946828225,england
+Thetford,4.549250445,england
+Thornaby-on-Tees,2.751600069,england
+Thundersley and South Benfleet,7.950399245,england
+Tilbury,2.041106018,england
+Tipton,2.628873667,england
+Tonbridge,7.256946068,england
+Torquay,3.683364618,england
+Totton,6.235912768,england
+Tower Hamlets,3.898609768,england
+Trowbridge,6.447969679,england
+Truro,5.672230998,england
+Tynemouth,4.878240131,england
+Urmston,6.868756676,england
+Wakefield,4.972026448,england
+Wallasey,3.299567227,england
+Wallsend,3.674397985,england
+Walsall,3.674181377,england
+Waltham Forest,4.143090134,england
+Wandsworth,6.118235403,england
+Warrington,6.251220163,england
+Warwick,8.065173689,england
+Washington,5.079865609,england
+Waterlooville,6.887307921,england
+Watford (Watford),6.810866255,england
+Wath upon Dearne,3.884338438,england
+Wellingborough,4.42534857,england
+Welwyn Garden City,6.92446721,england
+West Bridgford,9.123069428,england
+West Bromwich,2.656529813,england
+West Molesey,9.233243852,england
+Weston-super-Mare,4.872318602,england
+Weymouth,5.928700031,england
+Whitehaven,4.32115833,england
+Whitley Bay,8.282243934,england
+Whitstable,7.550558669,england
+Wickersley and Bramley,6.424438669,england
+Widnes,4.723934741,england
+Wigan,4.426957051,england
+Wigston,6.289985182,england
+Willenhall,3.005118892,england
+Willerby and Anlaby,9.030916119,england
+Wilmslow,9.077445855,england
+Winchester,8.102564114,england
+Windsor,8.75555643,england
+Winsford,4.523258102,england
+Wisbech,2.813980744,england
+Wishaw,3.936537358,scotland
+Witham,6.040086738,england
+Witney,8.303708485,england
+Woking,8.287810857,england
+Wokingham,9.480947169,england
+Wolverhampton,4.05111292,england
+Worcester,6.424586958,england
+Workington,2.76901792,england
+Worksop,4.850902858,england
+Worthing,6.713243206,england
+Wrexham,5.548607433,wales
+Wythenshawe,3.429990122,england
+Yate,7.37440017,england
+Yeovil,6.230909908,england
+York,7.462691789,england

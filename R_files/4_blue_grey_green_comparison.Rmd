@@ -1,0 +1,211 @@
+---
+title: "Blue, Green, Grey Analysis"
+author: "Matthew Morgan"
+date: "2024-07-19"
+output: html_document
+---
+
+```{r load packages}
+library(readr)
+library(ggplot2)
+library(reshape2)
+library(ggsignif)
+library(ggpubr)
+library(tidyr)
+library(dunn.test)
+library(dplyr)
+```
+
+```{r setup working directory}
+#setwd("")
+getwd()
+```
+
+```{r load data}
+df <- read_csv("blue_ranks.csv",
+               show_col_types = FALSE)
+
+df <- df %>%
+  rename(
+    total_blue = perc_blue,
+    total_green = perc_green,
+    rel_built = perc_grey
+  )
+colnames(df)
+```
+
+```{r boxplot}
+# Reshape to long format
+df_long <- melt(df, id.vars = "class", measure.vars = c("total_green", "total_blue", "rel_built"))
+
+# Reorder variable factor levels
+df_long$variable <- factor(df_long$variable, levels = c("rel_built", "total_green", "total_blue"))
+
+# Plot
+p <- ggplot(df_long, aes(x = variable, y = value, fill = class)) +
+  geom_boxplot(position = position_dodge(width = 0.8)) +
+  theme_minimal() +
+  labs(title = "Box Plots of Cover Variables by Class", x = "Cover Type", y = "Value") +
+  scale_fill_manual(values = c("inland" = "#AFE86D", "estuarine" = "#9FE2BF", "coastal" = "#6495ED"))
+p
+```
+
+```{r reshape data}
+# Reshape
+df_long <- melt(df, id.vars = "class", measure.vars = c("total_blue", "total_green", "rel_built"))
+
+# Reorder
+df_long$variable <- factor(df_long$variable, levels = c("total_blue","total_green","rel_built"))
+
+# Plot
+p <- ggplot(df_long, aes(x = class, y = value, fill = class)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  labs(title = "Box Plots of Cover Variables by Class", x = "Class", y = "Value") +
+  scale_fill_manual(values = c("inland" = "#AFE86D", "estuarine" = "#9FE2BF", "coastal" = "#6495ED")) +
+  facet_wrap(~ variable, scales = "free_x", ncol = 3)
+p
+
+```
+
+```{r diagnostic plots}
+# Q-Q plots for each variable within each group
+par(mfrow = c(3, 3))
+for (class in unique(df$class)) {
+  qqnorm(df$total_green[df$class == class], main = paste("Q-Q Plot of Total Green -", class))
+  qqline(df$total_green[df$class == class], col = "red")
+  
+  qqnorm(df$total_blue[df$class == class], main = paste("Q-Q Plot of Total Blue -", class))
+  qqline(df$total_blue[df$class == class], col = "red")
+  
+  qqnorm(df$rel_built[df$class == class], main = paste("Q-Q Plot of Relative Built -", class))
+  qqline(df$rel_built[df$class == class], col = "red")
+}
+par(mfrow = c(1, 1))
+
+# Histograms for each variable within each group
+par(mfrow = c(3, 3))
+for (class in unique(df$class)) {
+  hist(df$total_green[df$class == class], breaks = 10, main = paste("Histogram of Total Green -", class), xlab = "Total Green")
+  hist(df$total_blue[df$class == class], breaks = 10, main = paste("Histogram of Total Blue -", class), xlab = "Total Blue")
+  hist(df$rel_built[df$class == class], breaks = 10, main = paste("Histogram of Relative Built -", class), xlab = "Relative Built")
+}
+
+shapiro_results <- list()
+for (class in unique(df$class)) {
+  shapiro_results[[paste("total_green", class, sep = "_")]] <- shapiro.test(df$total_green[df$class == class])
+  shapiro_results[[paste("total_blue", class, sep = "_")]] <- shapiro.test(df$total_blue[df$class == class])
+  shapiro_results[[paste("rel_built", class, sep = "_")]] <- shapiro.test(df$rel_built[df$class == class])
+}
+
+# Print Shapiro-Wilk test
+for (name in names(shapiro_results)) {
+  cat("\nShapiro-Wilk test results for", gsub("_", " ", name), "\n")
+  print(shapiro_results[[name]])
+}
+
+par(mfrow = c(1, 1))
+```
+Green: inland(normal), coastal(normal), estuarine (nonpara)
+Blue: inland(nonpara), coastal(nonpara), estuarine (nonpara)
+built: inland(normal), coastal(normal), estuarine (nonpara)
+
+```{r kruskal-wallis}
+# Data for Kruskal-Wallis test
+kr <- df %>%
+  select(class, Grey_space = `rel_built`, Blue_space = `total_blue`, Green_space = `total_green`) %>%
+  pivot_longer(cols = -class, names_to = "Type", values_to = "Value")
+
+# Check
+print(kr %>% filter(Type == "Blue_space") %>% head())
+print(kr %>% filter(Type == "Green_space") %>% head())
+print(kr %>% filter(Type == "Grey_space") %>% head())
+
+# Check summary statistics for each group
+kr %>% group_by(Type, class) %>% summarise(
+  Mean = mean(Value),
+  Median = median(Value),
+  N = n()
+) %>% print()
+
+# Function to perform Kruskal-Wallis test for each group
+perform_kruskal <- function(data, space_type) {
+  data_filtered <- data %>% filter(Type == space_type)
+  test_result <- kruskal.test(Value ~ class, data = data_filtered)
+  return(test_result)
+}
+
+# Run
+results_grey <- perform_kruskal(kr, "Grey_space")
+results_blue <- perform_kruskal(kr, "Blue_space")
+results_green <- perform_kruskal(kr, "Green_space")
+
+# Print
+print("Grey Space Kruskal-Wallis Test:")
+print(results_grey)
+
+print("Blue Space Kruskal-Wallis Test:")
+print(results_blue)
+
+print("Green Space Kruskal-Wallis Test:")
+print(results_green)
+```
+
+```{r Dunn}
+# Function to perform Dunn's test for each space
+perform_dunn_test <- function(data, space_type) {
+  data_filtered <- data %>% filter(Type == space_type)
+  dunn_result <- dunn.test(data_filtered$Value, g = data_filtered$class, method = "bonferroni")
+  return(dunn_result)
+}
+
+# Dunn's test for all types:
+results_dunn_grey <- perform_dunn_test(kr, "Grey_space")
+results_dunn_blue <- perform_dunn_test(kr, "Blue_space")
+results_dunn_green <- perform_dunn_test(kr, "Green_space")
+
+# Print
+print("Dunn's Test for Grey Space:")
+print(results_dunn_grey)
+
+print("Dunn's Test for Blue Space:")
+print(results_dunn_blue)
+
+print("Dunn's Test for Green Space:")
+print(results_dunn_green)
+```
+
+```{r final box plot}
+df_long <- melt(df, id.vars = "class", measure.vars = c("total_blue", "total_green", "rel_built"))
+
+# Reorder
+df_long$variable <- factor(df_long$variable, levels = c("total_blue","total_green","rel_built"))
+
+# Create a named vector for new facet labels
+facet_labels <- c("total_blue" = "Blue space", "total_green" = "Green space", "rel_built" = "Grey space")
+
+p <- ggplot(df_long, aes(x = class, y = value, fill = class)) +
+  geom_boxplot(outlier.shape = NA) +  # Remove outliers from boxplot
+  geom_jitter(width = 0.2, size = 1, alpha = 0.25) +  # Add jitter
+  theme_bw() +
+  labs(title = "", x = "", y = "Land Cover Percentage") +
+  scale_fill_manual(values = c("inland" = "#FFA07A", "estuarine" = "#9FE2BF", "coastal" = "#6495ED"), labels = c("Coastal", "Estuarine", "Inland")) +
+  facet_wrap(~ variable, scales = "free_x", ncol = 3, labeller = labeller(variable = facet_labels)) +
+  theme(
+    axis.title.y = element_text(size = 12),
+    strip.text = element_text(size = 12),
+    axis.text.x = element_blank(),  
+    axis.ticks.x = element_blank(),  
+    axis.text.y = element_text(size = 12),
+    legend.position = "bottom",  
+    legend.text = element_text(size = 13), 
+    legend.key.size = unit(1.5, "lines"),  
+    legend.title = element_blank(), 
+  ) 
+
+# Print the plot
+print(p)
+
+ggsave("facet_plot.png", plot = p, dpi = 300)
+```
+

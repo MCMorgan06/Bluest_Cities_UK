@@ -1,0 +1,283 @@
+---
+title: "Bar and Box Plots - Land Cover Overview"
+author: "Matthew Morgan"
+date: "2025-02-17"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r load packages}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(gridExtra)
+library(forcats)
+library(patchwork)
+library(psych)
+```
+
+```{r set_directory}
+#setwd("")
+getwd()
+```
+
+```{r import_data}
+df_1 <- read_csv("UKCEHLCM_final_df_200.csv", show_col_types = FALSE)
+```
+
+```{r remove unwanted cities}
+# List which cities have <5000 people
+removed_cities <- df_1[df_1$population_counts < 5000, ]
+print(removed_cities$name)
+
+# Remove population_counts >= 5000
+df_1 <- df_1[df_1$population_counts >= 5000, ]
+```
+
+```{r extract column names}
+column_names <- colnames(df_1)
+print(column_names)
+```
+
+```{r combine OS data and UKCEH}
+df_1 <- df_1 %>%
+  mutate(
+    `Littoral sediment_1` = rowSums(across(c(`Littoral sediment`, foreshore_area)), na.rm = TRUE),
+    Saltwater_1 = rowSums(across(c(Saltwater, tidal_water_area)), na.rm = TRUE),
+    Freshwater_1 = rowSums(across(c(Freshwater, surface_water_area)), na.rm = TRUE)
+  )
+```
+
+```{r calculate classified cover}
+df_1 <- df_1 %>%
+  mutate(
+    total_cover = rowSums(across(c(`Deciduous woodland`, `Coniferous woodland`, Arable, `Improved grassland` , `Neutral grassland`, `Calacareous grassland`, `Acid grassland`, Fen, Heather, `Heather grassland`, Bog, `Inland rock`, Saltwater_1, Freshwater_1, `Supralittoral rock`, `Supralittoral sediment`, `Littoral rock`, `Littoral sediment_1`, Saltmarsh, Urban, Suburban)), na.rm = TRUE)
+)
+
+#
+colnames(df_1)
+
+buffered_city <- (df_1[1, 28])
+classified_land <- (df_1[1, 39]) 
+buffered_city
+classified_land
+```
+
+```{r define land cover columns}
+selected_columns <- c("Deciduous woodland", "Coniferous woodland", "Arable", "Improved grassland" , "Neutral grassland", "Calacareous grassland", "Acid grassland",  "Fen", "Heather", "Heather grassland", "Bog", "Inland rock", "Saltwater_1", "Freshwater_1", "Supralittoral rock", "Supralittoral sediment", "Littoral rock", "Littoral sediment_1", "Saltmarsh", "Urban", "Suburban")
+list(selected_columns)
+```
+
+```{r box plots landcover}
+# Sum the areas for each land cover type across all cities
+df_percent_cover <- df_1 %>%
+  mutate(across(all_of(selected_columns), ~ (. / total_cover) * 100, .names = "percent_{col}"))
+
+# List of columns to plot
+variables <- c("percent_Deciduous woodland", "percent_Coniferous woodland", "percent_Arable", "percent_Improved grassland", 
+"percent_Neutral grassland", "percent_Calacareous grassland", "percent_Acid grassland", "percent_Fen", 
+"percent_Heather", "percent_Heather grassland", "percent_Bog", "percent_Inland rock", "percent_Saltwater_1", 
+"percent_Freshwater_1", "percent_Supralittoral rock", "percent_Supralittoral sediment", "percent_Littoral rock", 
+"percent_Littoral sediment_1", "percent_Saltmarsh", "percent_Urban", "percent_Suburban"
+)
+
+# New names for columns
+new_names <- c("Deciduous woodland", "Coniferous woodland", "Arable", "Improved grassland", 
+"Neutral grassland", "Calcareous grassland", "Acid grassland", "Fen", 
+"Heather", "Heather grassland", "Bog", "Inland rock", "Saltwater", 
+"Freshwater", "Supralittoral rock", "Supralittoral sediment", "Littoral rock", 
+"Littoral sediment", "Saltmarsh", "Urban", "Suburban")
+
+# Order columna based on coverage (large to small)
+column_order <- c("Suburban", "Urban", "Improved grassland", "Deciduous woodland", "Arable", 
+                 "Freshwater", "Neutral grassland", "Littoral sediment", "Saltwater", 
+                 "Coniferous woodland", "Calcareous grassland", "Saltmarsh", 
+                 "Heather grassland", "Fen", "Bog", "Supralittoral sediment", 
+                 "Heather", "Acid grassland", "Littoral rock", "Inland rock", 
+                 "Supralittoral rock")
+
+# Create a named vector for renaming
+names(new_names) <- variables
+
+# Reshape the data frame from wide to long format
+df_long <- df_percent_cover %>%
+  pivot_longer(cols = all_of(variables), names_to = "Land_Cover_Type", values_to = "Value")
+
+# Reorder the factor levels and rename them
+df_long <- df_long %>%
+  mutate(Land_Cover_Type = factor(Land_Cover_Type, levels = names(new_names), labels = new_names)) %>%
+  mutate(Land_Cover_Type = factor(Land_Cover_Type, levels = column_order))
+
+# Define custom colors for each land cover type (coloured by habnitat grouping)
+custom_colors <- c(
+  "Suburban" = "lightgrey",  
+  "Urban" = "lightgrey",  
+  "Improved grassland" = "#AFE86D",  
+  "Deciduous woodland" = "#AFE86D",  
+  "Arable" = "#AFE86D",  
+  "Freshwater" = "#3e5d96",  
+  "Neutral grassland" = "#AFE86D",  
+  "Littoral sediment" = "#3e5d96",  
+  "Saltwater" = "#3e5d96",  
+  "Coniferous woodland" = "#AFE86D",  
+  "Calcareous grassland" = "#AFE86D",  
+  "Saltmarsh" = "#3e5d96",  
+  "Heather grassland" = "#AFE86D",  
+  "Fen" = "#3e5d96",  
+  "Bog" = "#3e5d96",  
+  "Supralittoral sediment" = "#3e5d96",  
+  "Heather" = "#AFE86D",  
+  "Acid grassland" = "#AFE86D",  
+  "Littoral rock" = "#3e5d96",  
+  "Inland rock" = "#AFE86D",  
+  "Supralittoral rock" = "#3e5d96"
+)
+
+# Adjusting outlier color and adding transparency
+psr <- ggplot(df_long, aes(x = Land_Cover_Type, y = sqrt(Value), fill = Land_Cover_Type)) +
+  geom_boxplot(outlier.colour = "black", outlier.shape = 19, outlier.size = 1.5, outlier.alpha = 0.3, colour = "black", size = 0.25) +
+  scale_fill_manual(values = custom_colors) +
+  labs(title = "", x = "", y = "Percentage (sqrt)") +
+  theme_bw() +
+  theme(
+    axis.title.y = element_text(size = 12.5),
+    axis.title.x = element_text(size = 14),
+    plot.title = element_text(size = 16),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    axis.text.y = element_text(angle = 90, hjust = 1, size = 12),
+    legend.position = "none"
+  )
+
+# Display the plot
+print(psr)
+```
+
+```{r create three major groups}
+df_2 <- df_1 %>%
+  mutate(
+    green = rowSums(across(c(`Deciduous woodland`, `Coniferous woodland`, Arable, `Improved grassland`, `Neutral grassland`, `Calacareous grassland`, `Acid grassland`, Heather, `Heather grassland`, `Inland rock`)), na.rm = TRUE),
+    blue = rowSums(across(c(Saltwater_1, Freshwater_1,`Supralittoral rock`, `Supralittoral sediment`, `Littoral rock`, `Littoral sediment_1`, `Saltmarsh`, Fen, Bog)), na.rm = TRUE),
+    grey = rowSums(across(c(Urban, Suburban)), na.rm = TRUE)
+  )
+
+# check sum of groups against total_cover
+df_2 <- df_2 %>%
+  mutate(
+    bgg_check = green + blue + grey)
+
+df_2 <- df_2 %>%
+  mutate(
+    perc_green = green / total_cover * 100,
+    perc_blue = blue / total_cover * 100,
+    perc_grey = grey / total_cover * 100
+  )
+
+# descriptive 
+df_2 %>%
+  select(perc_green, perc_blue, perc_grey) %>%
+  describe()
+
+options(digits = 7)
+write.csv(df_2, "blue_ranks.csv", row.names = FALSE)
+
+
+# Reshape the data to long format
+df_long <- df_2 %>%
+  pivot_longer(cols = c(perc_green, perc_blue, perc_grey), names_to = "Land_cover", values_to = "Percentage") %>%
+  mutate(Land_cover = fct_relevel(Land_cover, "perc_grey", "perc_green", "perc_blue"))  # Reorder factor levels
+
+# Create the box plot with no x-axis labels and no legend
+ggplot(df_long, aes(x = Land_cover, y = Percentage, fill = Land_cover)) +
+  geom_boxplot() +
+  labs(title = "",
+       x = "",  # Remove the x-axis label description
+       y = "Percentage Cover (%)") +
+  theme_classic() +
+  theme(axis.text.x = element_blank(),  # Suppress x-axis text labels
+        axis.ticks.x = element_blank(),  # Optionally remove the x-axis ticks if desired
+        legend.position = "none") +  # Remove the legend
+  scale_fill_manual(values = c("perc_grey" = "#8d9399", "perc_green" = "#AFE86D", "perc_blue" = "#3e5d96")) 
+```
+
+```{r barplot total cover}
+#
+tlc <- read_csv("landcover_barplot_totals.csv", show_col_types = FALSE)
+
+# Reorder land_cover in descending order
+tlc$land_cover <- fct_reorder(tlc$land_cover, tlc$percentage, .desc = TRUE)
+
+# Define custom colors
+custom_colors <- c(
+  "Suburban" = "lightgrey",  
+  "Urban" = "lightgrey",  
+  "Improved grassland" = "#AFE86D",  
+  "Deciduous woodland" = "#AFE86D",  
+  "Arable" = "#AFE86D",  
+  "Freshwater" = "#3e5d96",  
+  "Neutral grassland" = "#AFE86D",  
+  "Littoral sediment" = "#3e5d96",  
+  "Saltwater" = "#3e5d96",  
+  "Coniferous woodland" = "#AFE86D",  
+  "Calcareous grassland" = "#AFE86D",  
+  "Saltmarsh" = "#3e5d96",  
+  "Heather grassland" = "#AFE86D",  
+  "Fen" = "#3e5d96",  
+  "Bog" = "#3e5d96",  
+  "Supralittoral sediment" = "#3e5d96",  
+  "Heather" = "#AFE86D",  
+  "Acid grassland" = "#AFE86D",  
+  "Littoral rock" = "#3e5d96",  
+  "Inland rock" = "#AFE86D",  
+  "Supralittoral rock" = "#3e5d96"
+)
+
+# Create the bar plot with custom colors and rounded value labels
+p <- ggplot(tlc, aes(x = land_cover, y = percentage, fill = land_cover)) +
+  geom_bar(stat = "identity", color = "black", size = 0.25) + 
+  scale_fill_manual(values = custom_colors) +
+  labs(title = "",
+       x = "Land Cover",
+       y = "Percentage") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.title.y = element_text(size = 12.5),
+        axis.text.y = element_text(angle = 90, hjust = 1, size = 12),
+        legend.position = "none")  # Hide legend if not needed
+
+# Add a label for values <1
+below_one <- tlc %>% filter(percentage < 1)
+if(nrow(below_one) > 0) {
+  p <- p +
+    annotate("text", x = mean(as.numeric(below_one$land_cover)), y = max(below_one$percentage) + 1, label = "<1", color = "black", size = 4, vjust = -1)
+}
+
+# Coordinates for the significance annotation line
+start_x <- which(levels(tlc$land_cover) == "Littoral sediment")
+end_x <- which(levels(tlc$land_cover) == "Supralittoral rock")
+y_position <- 1.7
+
+# annotation line
+p <- p +
+  geom_segment(aes(x = start_x, xend = start_x, y = y_position - 0.3, yend = y_position + 0.3), size = 0.25) +  # Vertical line up from Littoral sediment
+  geom_segment(aes(x = start_x, xend = end_x, y = y_position + 0.3, yend = y_position + 0.3), size = 0.25) +    # Horizontal line across
+  geom_segment(aes(x = end_x, xend = end_x, y = y_position + 0.3, yend = y_position - 0.3), size = 0.25)        # Vertical line down to Supralittoral rock
+
+# Print the plot
+print(p)
+```
+```{r final plots}
+# Remove x-axis labels from the first plot
+p <- p + theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+# Combine the plots using patchwork
+combined_plot <- p / psr
+
+# Display the combined plot
+print(combined_plot)
+
+# export plot
+ggsave("bar_box_21.png", plot = combined_plot, dpi = 300)
+```
+

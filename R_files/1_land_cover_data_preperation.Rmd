@@ -1,0 +1,102 @@
+---
+title: "Land cover and land use data preperation"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+date: "2024-02-20"
+---
+
+```{r load packages}
+library(dplyr)
+library(readr)
+library(tidyr)
+```
+
+```{r import data}
+shape <- read_csv("UKCEH_LCM_200m_buff_final_v1.csv", 
+    col_types = cols(VALUE = col_number(), 
+        name = col_character(), area = col_number()))
+OS_bind_final_200 <- read_csv("OS_bind_final_200.csv", show_col_types = FALSE)
+BUAs2022_Top500_plus200mBuff <- read_csv("500bua_200m_buffer_size.csv", show_col_types = FALSE)
+population_data <- read_csv("population_data.csv", show_col_types = FALSE)
+imd_data <- read_csv("imdd_all_v2.csv", show_col_types = FALSE)
+```                           
+
+```{r pivot data}
+pivoted_lcm <- shape %>%
+  pivot_wider(
+    names_from = VALUE,
+    values_from = area,
+    values_fn = list(area = sum)
+  )
+
+# print(pivoted_lcm)
+```
+
+```{r clean data}
+clean <- pivoted_lcm %>%
+  mutate(across(where(is.character), ~ifelse(is.na(.), "unknown", .)),
+         across(where(is.numeric), ~coalesce(., 0)))
+```
+
+```{r column sum}
+# Add a new column "total" and fill it with the sum of each row
+total <- clean %>%
+  mutate(total = rowSums(select(., -name), na.rm = TRUE))
+
+# Print the final data frame
+# View(total)
+```
+
+```{r reorder columns}
+colnames(total)
+total_ordered <- total[, c(1, 8, 10, 13, 14, 11, 12, 16, 3, 15, 5, 6, 4, 21, 9, 22, 17, 18, 19, 20, 2, 7, 23)] 
+
+#
+head(total_ordered)
+```
+
+```{r rename columns}
+names(total_ordered) <- c( "name", "Deciduous woodland", "Coniferous woodland", "Arable", "Improved grassland", "Neutral grassland", "Calacareous grassland", "Acid grassland", "Fen", "Heather", "Heather grassland", "Bog", "Inland rock", "Saltwater", "Freshwater", "Supralittoral rock", "Supralittoral sediment", "Littoral rock", "Littoral sediment", "Saltmarsh", "Urban", "Suburban", "total_ceh")
+```
+
+```{r merge dataframes}
+# OS water data
+master1 <- merge(total_ordered, OS_bind_final_200, by = "name")
+
+# ONS BUA data
+master2 <- merge(master1, BUAs2022_Top500_plus200mBuff, by = "name")
+
+# ONS population data
+master3 <- merge(master2, population_data, by = "name")
+
+# Multiple deprivation indices
+master4 <- merge(master3, imd_data, by = "name", all.x = TRUE)
+```
+
+```{r check land cover and land use data sets sum to the total known area}
+# Adding columns to sum land cover data from UKCEH and OS Land Use files
+totals <- master4 %>%
+  mutate(lc_lu_total = rowSums(select(., -name, -total_ceh, -`200m_buff_area`,
+                                      -class, -population_counts, -long, -lat, -imdd_weight_av, -country, -original_bua_area), na.rm = TRUE))
+# create final clean version with no NA
+clean_totals <- totals %>%
+  mutate(across(where(is.character), ~ifelse(is.na(.), "unknown", .)),
+         across(where(is.numeric), ~coalesce(., 0)))
+
+# Assuming 'totals' dataframe already contains the columns 'lc_lu_total' and 'CBUA_total'
+percentage <- clean_totals %>%
+  mutate(percentage = (lc_lu_total / `200m_buff_area`) * 100)
+
+# View the resulting dataframe with the new 'percentage' column
+head(percentage)
+summary(percentage$percentage)
+
+# there are neglible deviations when comparing the BUA vector layer, and sum off all land cover/use data. Any loss +/- is due to the 10m resolution of CEH data causing some minor differences in clips (some pixels stepping outside or within on occasion)
+```
+
+```{r export csv}
+# Assuming your data frame is named 'total_ordered'
+write.csv(clean_totals, file = "UKCEHLCM_final_df_200.csv", row.names = FALSE)
+```

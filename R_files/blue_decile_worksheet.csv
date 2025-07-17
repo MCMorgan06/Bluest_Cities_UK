@@ -1,0 +1,496 @@
+name,class,perc_blue,rank,decile
+Great Yarmouth,coastal,25.48586694,1,1
+Peterhead,coastal,24.49671066,2,1
+Fleetwood,coastal,20.78433437,3,1
+Staines-upon-Thames,inland,19.46306999,4,1
+Barrow-in-Furness,coastal,19.01444975,5,1
+Canvey Island,estuarine,17.76226968,6,1
+Blyth (Northumberland),coastal,17.40723138,7,1
+Wallasey,coastal,16.99610407,8,1
+Newquay,coastal,15.96850418,9,1
+Penarth,coastal,15.88002535,10,1
+Rhyl,coastal,15.32099418,11,1
+Milford Haven,coastal,14.68216967,12,1
+Felixstowe,coastal,14.66983915,13,1
+Port Talbot,coastal,14.53890545,14,1
+Gosport,coastal,14.42062019,15,1
+Dover,coastal,14.34854456,16,1
+Lytham St Anne's,coastal,14.34126126,17,1
+Tower Hamlets,inland,14.17372061,18,1
+Portsmouth,coastal,13.80131483,19,1
+Crosby (Sefton),coastal,13.45247152,20,1
+Workington,coastal,12.82495355,21,1
+Maldon,estuarine,11.59429649,22,1
+Tilbury,estuarine,11.5519745,23,1
+Lancing and Sompting,coastal,11.51140421,24,1
+Weymouth,coastal,11.48045574,25,1
+Poole,coastal,11.07825113,26,1
+Margate,coastal,10.95093176,27,1
+Ramsgate,coastal,10.87018681,28,1
+Lowestoft,coastal,10.68194158,29,1
+Lee-on-the-Solent,coastal,10.61974607,30,1
+Barry (Vale of Glamorgan),coastal,10.5992346,31,1
+Morecambe,coastal,10.5759391,32,1
+Eastbourne,coastal,10.49468903,33,1
+Chafford Hundred and West Thurrock,estuarine,10.14329082,34,1
+Whitstable,coastal,10.02313025,35,1
+Ash and Ash Vale,inland,9.990952774,36,1
+Llanelli,estuarine,9.950528303,37,1
+Neath,inland,9.813931652,38,1
+Bognor Regis,coastal,9.760734625,39,1
+Clydebank,inland,9.681878707,40,1
+Bexhill-on-Sea,coastal,9.526133446,41,1
+Tynemouth,coastal,9.425762161,42,1
+Newham,inland,9.335963097,43,1
+Irvine,inland,9.3142289,44,1
+Newport (Newport),estuarine,9.271367863,45,1
+Exmouth,coastal,9.152075767,46,1
+Dartford,inland,9.100355045,47,1
+Rustington,coastal,9.081222278,48,1
+Swansea,coastal,8.948127546,49,1
+"Christchurch (Bournemouth, Christchurch and Poole)",coastal,8.905421591,50,1
+Greenock,inland,8.790366565,51,2
+Broadstairs,coastal,8.773670558,52,2
+Rochester,estuarine,8.654855389,53,2
+Southampton,estuarine,8.634078003,54,2
+Clacton-on-Sea,coastal,8.602739015,55,2
+Southport,coastal,8.557283971,56,2
+Aberdeen,coastal,8.530063421,57,2
+Larkfield,inland,8.527887781,58,2
+Widnes,estuarine,8.512068588,59,2
+Renfrew,inland,8.482638181,60,2
+Colwyn Bay,coastal,8.440931143,61,2
+Wath upon Dearne,inland,8.355945673,62,2
+Torquay,coastal,8.325874287,63,2
+Redcar,coastal,8.273230059,64,2
+Long Eaton,inland,8.272771823,65,2
+South Shields,coastal,8.236207801,66,2
+Folkestone,coastal,8.100692629,67,2
+Richmond upon Thames,inland,7.739024419,68,2
+Hartlepool,coastal,7.728066301,69,2
+Prestwick,coastal,7.646058171,70,2
+Ayr,coastal,7.639389094,71,2
+Seaford,coastal,7.541577652,72,2
+Blackpool,coastal,7.53139012,73,2
+Hammersmith and Fulham,inland,7.500171328,74,2
+Sittingbourne,inland,7.380420951,75,2
+Runcorn,estuarine,7.352695076,76,2
+Arbroath,coastal,7.319219883,77,2
+Skegness,coastal,7.305552634,78,2
+Plymouth,coastal,7.305304627,79,2
+Bridgwater,inland,7.263243603,80,2
+Hoddesdon,inland,7.231048353,81,2
+Inverness,estuarine,7.202204666,82,2
+Gravesend,estuarine,6.968619159,83,2
+Bridlington,coastal,6.712972886,84,2
+Paignton,coastal,6.677533806,85,2
+Kirkcaldy,coastal,6.62333081,86,2
+Totton,inland,6.598401198,87,2
+Barnstaple,inland,6.589986443,88,2
+Aldershot,inland,6.473781472,89,2
+Whitley Bay,coastal,6.470507227,90,2
+Hastings,coastal,6.452872362,91,2
+Jarrow,inland,6.382356775,92,2
+Greenwich,inland,6.332692695,93,2
+City of Westminster,inland,6.306657139,94,2
+Southend-on-Sea,estuarine,6.270258199,95,2
+Grays,estuarine,6.250746621,96,2
+Barking and Dagenham,inland,6.207937703,97,2
+Whitehaven,coastal,6.189676432,98,2
+Dundee,estuarine,6.167318285,99,2
+Rickmansworth,inland,5.925457453,100,2
+Worthing,coastal,5.879130664,101,3
+Alloa,inland,5.863590901,102,3
+Southwark,inland,5.845105075,103,3
+West Molesey,inland,5.821456538,104,3
+Locks Heath,coastal,5.785258049,105,3
+Kingston upon Hull,estuarine,5.779092612,106,3
+Birkenhead,estuarine,5.715301215,107,3
+Bexley,inland,5.71233824,108,3
+Maidenhead,inland,5.600406457,109,3
+Gillingham (Medway),estuarine,5.556771747,110,3
+Caversham,inland,5.548220709,111,3
+Old Trafford,inland,5.513704791,112,3
+Sunderland,coastal,5.50305181,113,3
+Brighton and Hove,coastal,5.391759203,114,3
+Scarborough,coastal,5.299371936,115,3
+Windsor,inland,5.299130819,116,3
+Doncaster,inland,5.293261381,117,3
+King's Lynn,inland,5.251483782,118,3
+Bebington,estuarine,5.198288831,119,3
+Lancaster,inland,5.184394353,120,3
+Grangemouth,estuarine,5.136474842,121,3
+Thornaby-on-Tees,inland,5.134419076,122,3
+Weston-super-Mare,coastal,5.033447602,123,3
+Humberston and New Waltham,estuarine,5.006797546,124,3
+Castleford,inland,4.950299032,125,3
+Bournemouth,coastal,4.918666443,126,3
+Wandsworth,inland,4.904877989,127,3
+Spalding,inland,4.900073239,128,3
+Reading,inland,4.891904298,129,3
+Billingham,inland,4.887767806,130,3
+Salford,inland,4.837336863,131,3
+Havant,coastal,4.819093638,132,3
+Cardiff,coastal,4.695993123,133,3
+Ashington (Northumberland),inland,4.546671226,134,3
+Waltham Forest,inland,4.41390291,135,3
+Ellesmere Port,estuarine,4.409208252,136,3
+Chichester,inland,4.385618309,137,3
+Havering,inland,4.366836523,138,3
+Stirling,inland,4.366368249,139,3
+Perth,inland,4.278899227,140,3
+Boston,inland,4.273195546,141,3
+Gateshead,inland,4.204410866,142,3
+Farnborough,inland,4.004038947,143,3
+Winchester,inland,3.977144707,144,3
+Eccles (Salford),inland,3.97278791,145,3
+Newbury,inland,3.882083565,146,3
+Hounslow,inland,3.869144019,147,3
+Abingdon-on-Thames,inland,3.842039077,148,3
+Kensington and Chelsea,inland,3.799121007,149,3
+Droitwich Spa,inland,3.766062416,150,3
+Preston (Preston),inland,3.672811986,151,4
+Edinburgh,coastal,3.669480212,152,4
+Falkirk,inland,3.653943538,153,4
+Newark-on-Trent,inland,3.653281552,154,4
+Denton (Tameside),inland,3.637680787,155,4
+Newcastle upon Tyne,inland,3.617537686,156,4
+Liverpool,estuarine,3.600811311,157,4
+Lincoln,inland,3.596079765,158,4
+Bedford,inland,3.578053453,159,4
+St Neots,inland,3.522245026,160,4
+Hillingdon,inland,3.45054123,161,4
+Peterborough,inland,3.390591641,162,4
+Beeston (Broxtowe),inland,3.38769797,163,4
+Evesham,inland,3.385652364,164,4
+Middlesbrough,inland,3.369501875,165,4
+Urmston,inland,3.369415343,166,4
+Gainsborough,inland,3.254612922,167,4
+Aberdare,inland,3.250354954,168,4
+Salisbury,inland,3.226363941,169,4
+Burton upon Trent,inland,3.220093212,170,4
+Fareham,coastal,3.20779875,171,4
+Pontypridd,inland,3.189424773,172,4
+Truro,inland,3.176624644,173,4
+Chatham,estuarine,3.143394133,174,4
+Egham,inland,3.135284201,175,4
+Ilkeston,inland,3.129092224,176,4
+Hackney,inland,3.111708482,177,4
+Fleet,inland,3.106844435,178,4
+Eastleigh,inland,3.08084584,179,4
+Carlton (Gedling),inland,3.062489052,180,4
+Norwich,inland,3.056885799,181,4
+Heswall,estuarine,3.026384143,182,4
+Paisley,inland,3.01729136,183,4
+Sevenoaks,inland,3.009932776,184,4
+Retford,inland,2.996791034,185,4
+Brierley Hill,inland,2.978847964,186,4
+Dumfries,inland,2.972083787,187,4
+Warrington,inland,2.844007282,188,4
+Bletchley,inland,2.809916307,189,4
+Northampton,inland,2.804673825,190,4
+Congleton,inland,2.772808425,191,4
+Formby,coastal,2.771705707,192,4
+Leigh (Wigan),inland,2.740475904,193,4
+Carlisle,inland,2.71201834,194,4
+Leighton Buzzard,inland,2.705373573,195,4
+Warwick,inland,2.699648715,196,4
+Wakefield,inland,2.681428231,197,4
+Milton Keynes,inland,2.675527292,198,4
+Shrewsbury,inland,2.668475612,199,4
+Lambeth,inland,2.655550021,200,4
+Tamworth,inland,2.653968902,201,5
+Dewsbury,inland,2.642587708,202,5
+Ipswich,inland,2.624793165,203,5
+Newport (Isle of Wight),inland,2.608563478,204,5
+Cheshunt,inland,2.608083477,205,5
+Huntingdon,inland,2.56872196,206,5
+Tipton,inland,2.565813173,207,5
+Bury (Bury),inland,2.480565782,208,5
+Chester,inland,2.427329361,209,5
+March,inland,2.414148924,210,5
+Stafford,inland,2.406486689,211,5
+Exeter,inland,2.405220787,212,5
+Rugeley,inland,2.397800095,213,5
+Bedworth,inland,2.392894485,214,5
+Bloxwich,inland,2.367259059,215,5
+Thetford,inland,2.363393959,216,5
+Enfield,inland,2.359003475,217,5
+Larbert and Stenhousemuir,inland,2.344999104,218,5
+Stockton-on-Tees,inland,2.344734632,219,5
+Wigan,inland,2.342768139,220,5
+Oxford,inland,2.341638652,221,5
+Rotherham,inland,2.327093492,222,5
+West Bridgford,inland,2.324636656,223,5
+Glasgow,inland,2.317860685,224,5
+York,inland,2.309664918,225,5
+Sale,inland,2.296221866,226,5
+Wisbech,inland,2.287862104,227,5
+Sudbury,inland,2.239806962,228,5
+Worcester,inland,2.139195566,229,5
+Royal Leamington Spa,inland,2.118671171,230,5
+Rowley Regis,inland,2.115426226,231,5
+Canterbury,inland,2.104121685,232,5
+Wellingborough,inland,2.100114922,233,5
+Normanton (Wakefield),inland,2.088482241,234,5
+Bilston (Wolverhampton),inland,2.076576938,235,5
+West Bromwich,inland,2.068513241,236,5
+Kirkintilloch,inland,2.054730459,237,5
+Winsford,inland,2.049365633,238,5
+Cambridge (Cambridge),inland,2.041875858,239,5
+Byfleet,inland,2.015988944,240,5
+Tonbridge,inland,2.009501547,241,5
+Kendal,inland,1.973325996,242,5
+Stratford-upon-Avon,inland,1.973289168,243,5
+Hertford,inland,1.970821394,244,5
+Ascot,inland,1.962888875,245,5
+Hereford,inland,1.959720171,246,5
+Newton Abbot,inland,1.915396088,247,5
+Camberley,inland,1.896514395,248,5
+Hamilton,inland,1.888442627,249,5
+Daventry,inland,1.876894121,250,5
+Witney,inland,1.862698567,251,6
+Bristol,inland,1.85837194,252,6
+Heanor,inland,1.858207511,253,6
+Cambuslang,inland,1.838509248,254,6
+Bolton (Bolton),inland,1.833015858,255,6
+Brighouse,inland,1.786231199,256,6
+Slough,inland,1.779137413,257,6
+Kettering,inland,1.749901703,258,6
+Haringey,inland,1.749513249,259,6
+Andover,inland,1.738571115,260,6
+Kingswinford,inland,1.73592501,261,6
+Banbury,inland,1.725491493,262,6
+Durham,inland,1.71773106,263,6
+Loughborough,inland,1.716175666,264,6
+Rushden,inland,1.715847944,265,6
+Bridgend,inland,1.715486439,266,6
+Aylesbury,inland,1.706970888,267,6
+St Helens (St. Helens),inland,1.699159649,268,6
+Keighley,inland,1.680131272,269,6
+Knowle and Dorridge,inland,1.665081756,270,6
+Kingston upon Thames,inland,1.649758504,271,6
+Dudley (Dudley),inland,1.635986235,272,6
+Scunthorpe,inland,1.62154081,273,6
+Thundersley and South Benfleet,inland,1.605756901,274,6
+Woking,inland,1.594332504,275,6
+Rugby,inland,1.588733764,276,6
+Swindon (Swindon),inland,1.584572513,277,6
+Ashford (Ashford),inland,1.580987201,278,6
+St Austell,inland,1.578521049,279,6
+Horwich,inland,1.57207182,280,6
+Maidstone,inland,1.564674511,281,6
+Wokingham,inland,1.561967193,282,6
+Blackburn (Blackburn with Darwen),inland,1.546221621,283,6
+Ashton-under-Lyne,inland,1.536163593,284,6
+Halifax,inland,1.520860646,285,6
+Stanford-le-Hope,estuarine,1.51798847,286,6
+Middleton (Rochdale),inland,1.465833376,287,6
+Chester-le-Street,inland,1.454652813,288,6
+Huddersfield,inland,1.452995767,289,6
+Rawtenstall,inland,1.450029444,290,6
+"New Haw, West Byfleet and Sheerwater",inland,1.446038156,291,6
+Birmingham,inland,1.441778812,292,6
+Nottingham,inland,1.423597173,293,6
+Watford (Watford),inland,1.423373532,294,6
+Bathgate,inland,1.419927518,295,6
+Solihull,inland,1.415233342,296,6
+Bamber Bridge,inland,1.4070205,297,6
+Smethwick,inland,1.404386874,298,6
+Nuneaton,inland,1.396943717,299,6
+Melton Mowbray,inland,1.396935819,300,6
+Gloucester,inland,1.389112344,301,7
+Coventry,inland,1.386389066,302,7
+Derby,inland,1.385556489,303,7
+Hyde (Tameside),inland,1.366304146,304,7
+Hemel Hempstead,inland,1.364697665,305,7
+Manchester,inland,1.362185173,306,7
+Guildford,inland,1.359085385,307,7
+Willenhall,inland,1.358752921,308,7
+Redhill (Reigate and Banstead),inland,1.357490402,309,7
+Sutton in Ashfield,inland,1.342989394,310,7
+Mildenhall (West Suffolk),inland,1.341032131,311,7
+Colchester,inland,1.329273738,312,7
+Burnley,inland,1.32850201,313,7
+Chorley,inland,1.322315042,314,7
+Bicester,inland,1.321488685,315,7
+Walsall,inland,1.319450643,316,7
+Telford,inland,1.311257848,317,7
+Basildon,inland,1.306241345,318,7
+Lewisham,inland,1.303303671,319,7
+Chelmsford,inland,1.293624741,320,7
+Bearsden,inland,1.288088597,321,7
+Elgin,inland,1.284253779,322,7
+Caerphilly,inland,1.276064957,323,7
+Worksop,inland,1.270254923,324,7
+Taunton,inland,1.269699936,325,7
+Farnham,inland,1.25150423,326,7
+East Kilbride,inland,1.244060229,327,7
+Heywood,inland,1.241701549,328,7
+Cumbernauld,inland,1.232733398,329,7
+Little Hulton,inland,1.230107309,330,7
+Redbridge,inland,1.223603785,331,7
+Kenilworth,inland,1.220801174,332,7
+Wilmslow,inland,1.21159361,333,7
+Bath,inland,1.210748299,334,7
+Stoke-on-Trent,inland,1.205330174,335,7
+Kidderminster,inland,1.204234332,336,7
+Oldbury (Sandwell),inland,1.200882459,337,7
+Merthyr Tydfil,inland,1.192237703,338,7
+Horley (Reigate and Banstead),inland,1.187320448,339,7
+Reigate,inland,1.171483525,340,7
+Leeds,inland,1.162859746,341,7
+Washington,inland,1.151979113,342,7
+Motherwell,inland,1.147530186,343,7
+Harlow,inland,1.140779885,344,7
+Mansfield,inland,1.131286371,345,7
+Ealing,inland,1.123467898,346,7
+Corby,inland,1.119364584,347,7
+Hinckley,inland,1.113784765,348,7
+Airdrie,inland,1.10944464,349,7
+Cannock,inland,1.101452077,350,7
+Royal Sutton Coldfield,inland,1.099787324,351,8
+Chesterfield,inland,1.08939095,352,8
+Leicester,inland,1.08361217,353,8
+Stockport,inland,1.074827996,354,8
+Stowmarket,inland,1.073611901,355,8
+Bootle (Sefton),estuarine,1.052593514,356,8
+Market Harborough,inland,1.033883745,357,8
+Rochdale,inland,1.032589177,358,8
+Stratton St Margaret,inland,1.023388227,359,8
+Camden,inland,1.016017631,360,8
+Ripley (Amber Valley),inland,1.015211169,361,8
+Livingston,inland,0.998071477,362,8
+Barnsley,inland,0.995999041,363,8
+Bury St Edmunds,inland,0.994574426,364,8
+Kilmarnock,inland,0.982788779,365,8
+Darlington,inland,0.982097694,366,8
+Coatbridge,inland,0.973909725,367,8
+Ebbw Vale,inland,0.971339859,368,8
+Cobham (Elmbridge),inland,0.97076212,369,8
+Sutton (Sutton),inland,0.962857195,370,8
+Witham,inland,0.962424528,371,8
+Macclesfield,inland,0.960721022,372,8
+Bishop's Stortford,inland,0.959266079,373,8
+Amersham,inland,0.957413039,374,8
+Brent,inland,0.957335896,375,8
+Bracknell,inland,0.955079384,376,8
+Swadlincote,inland,0.948854601,377,8
+Crawley (Crawley),inland,0.938236792,378,8
+Wishaw,inland,0.936921996,379,8
+Horsham,inland,0.921707909,380,8
+Cwmbrân,inland,0.912947592,381,8
+Redditch,inland,0.911846381,382,8
+Yate,inland,0.910957294,383,8
+Stroud,inland,0.904884932,384,8
+Chippenham (Wiltshire),inland,0.901299374,385,8
+Sheffield,inland,0.879464001,386,8
+Merton,inland,0.878959897,387,8
+Pontypool,inland,0.875960531,388,8
+Accrington,inland,0.875844844,389,8
+Altrincham,inland,0.865431227,390,8
+Wolverhampton,inland,0.860580129,391,8
+Great Bookham and Fetcham,inland,0.842684519,392,8
+Braintree,inland,0.82403801,393,8
+Bishop Auckland,inland,0.810139653,394,8
+Welwyn Garden City,inland,0.805359763,395,8
+Chadderton,inland,0.801230554,396,8
+Hucknall,inland,0.797670216,397,8
+High Wycombe,inland,0.788256282,398,8
+Grimsby,estuarine,0.78001373,399,8
+Lichfield,inland,0.776668669,400,8
+Haslemere,inland,0.771504526,401,9
+Darwen,inland,0.769999664,402,9
+Frome,inland,0.7610012,403,9
+Golborne,inland,0.759973254,404,9
+Wigston,inland,0.759825961,405,9
+Fulwood,inland,0.758683914,406,9
+Bellshill,inland,0.756147671,407,9
+Beverley,inland,0.74922081,408,9
+Trowbridge,inland,0.738864871,409,9
+Basingstoke,inland,0.730712264,410,9
+Burntwood,inland,0.728837457,411,9
+Immingham,estuarine,0.721460599,412,9
+Hale (Trafford),inland,0.718171958,413,9
+Burgess Hill,inland,0.711643882,414,9
+Dereham,inland,0.699446116,415,9
+Stourbridge,inland,0.688701739,416,9
+Rayleigh,inland,0.68209838,417,9
+Wrexham,inland,0.68175045,418,9
+Chandler's Ford,inland,0.675764208,419,9
+Dunstable,inland,0.663013481,420,9
+Hitchin,inland,0.649970708,421,9
+Kingswood and Fishponds,inland,0.646038075,422,9
+Wythenshawe,inland,0.645546098,423,9
+Brentwood,inland,0.640834666,424,9
+Glenrothes,inland,0.636523858,425,9
+Didcot,inland,0.631016263,426,9
+Dunfermline,inland,0.617723087,427,9
+Loughton,inland,0.600005773,428,9
+Bradford,inland,0.59264914,429,9
+Ashton-in-Makerfield,inland,0.586695238,430,9
+Halesowen,inland,0.574335496,431,9
+Waterlooville,inland,0.570634739,432,9
+Barnet,inland,0.56212928,433,9
+Crewe,inland,0.555844169,434,9
+Leyland,inland,0.555113819,435,9
+Newton Mearns,inland,0.553341204,436,9
+St Albans,inland,0.548411056,437,9
+Chorleywood,inland,0.54518297,438,9
+Holbury,inland,0.531687354,439,9
+Kirkby,inland,0.530681335,440,9
+Ewell,inland,0.525375447,441,9
+Bromsgrove,inland,0.505485733,442,9
+Newcastle-under-Lyme,inland,0.485457636,443,9
+Billericay,inland,0.478241001,444,9
+Cheltenham,inland,0.47657587,445,9
+Royal Tunbridge Wells,inland,0.463454024,446,9
+Grantham,inland,0.460205512,447,9
+East Grinstead,inland,0.45940788,448,9
+Catterick Garrison,inland,0.459328304,449,9
+Carterton,inland,0.449713562,450,9
+Wallsend,inland,0.44619719,451,10
+Haverhill,inland,0.438939051,452,10
+Newton Aycliffe,inland,0.431686788,453,10
+Coalville,inland,0.429502838,454,10
+Prescot,inland,0.418868055,455,10
+Cramlington,inland,0.416586371,456,10
+Stevenage,inland,0.412008703,457,10
+Bromley,inland,0.392539691,458,10
+Beaconsfield,inland,0.391101701,459,10
+Yeovil,inland,0.383574675,460,10
+Bushey,inland,0.366349572,461,10
+Huyton with Roby,inland,0.365084932,462,10
+Islington,inland,0.362949441,463,10
+Epsom,inland,0.35221594,464,10
+Harrow,inland,0.344670125,465,10
+Pontefract,inland,0.338230356,466,10
+Wickersley and Bramley,inland,0.331880662,467,10
+Consett,inland,0.331320758,468,10
+Haywards Heath,inland,0.322857281,469,10
+Peterlee,inland,0.316387135,470,10
+Crowborough,inland,0.312004072,471,10
+Harrogate,inland,0.290687433,472,10
+Pudsey,inland,0.287875048,473,10
+Oldham,inland,0.270031644,474,10
+Hatfield,inland,0.266066467,475,10
+Skelmersdale,inland,0.25711455,476,10
+Ormskirk,inland,0.246320389,477,10
+Batley,inland,0.238852758,478,10
+Borehamwood,inland,0.237576443,479,10
+Horndean,inland,0.233924002,480,10
+Harpenden,inland,0.228886921,481,10
+Arnold,inland,0.222968348,482,10
+Willerby and Anlaby,inland,0.212139399,483,10
+Morley (Leeds),inland,0.204166475,484,10
+Luton,inland,0.203810158,485,10
+Great Malvern,inland,0.198036858,486,10
+Sedgley,inland,0.194006373,487,10
+Longbenton,inland,0.192746248,488,10
+Letchworth,inland,0.158970426,489,10
+Tadworth and Epsom Downs,inland,0.13720395,490,10
+Eston,inland,0.125829474,491,10
+Croydon,inland,0.113732255,492,10
+Caterham,inland,0.077504124,493,10
+Newmarket,inland,0.075662736,494,10
+Hazlemere,inland,0.055563727,495,10

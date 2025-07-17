@@ -1,0 +1,501 @@
+name,original_bua_area
+Aberdare,10223129
+Aberdeen,58788648
+Abingdon-on-Thames,8124110
+Accrington,6741531
+Airdrie,9187020
+Aldershot,8359489
+Alloa,6556983
+Altrincham,10747809
+Amersham,6661283
+Andover,12408868
+Arbroath,8268197
+Arnold,8605501
+Ascot,13019475
+Ash and Ash Vale,6543317
+Ashford (Ashford),20785282
+Ashington (Northumberland),7706620
+Ashton-in-Makerfield,6710677
+Ashton-under-Lyne,9559488
+Avonmouth,14468204
+Aylesbury,17194008
+Ayr,16897086
+Bamber Bridge,12692024
+Banbury,13820948
+Barking and Dagenham,30244148
+Barnet,66657222
+Barnsley,17945004
+Barnstaple,9200130
+Barrow-in-Furness,16286692
+Barry (Vale of Glamorgan),15810867
+Basildon,26064017
+Basingstoke,29735817
+Bath,22838466
+Bathgate,8675941
+Batley,10518242
+Beaconsfield,6609472
+Bearsden,8755552
+Bebington,17799168
+Bedford,22356690
+Bedworth,7041023
+Beeston (Broxtowe),13467356
+Bellshill,7197276
+Beverley,8310689
+Bexhill-on-Sea,12295732
+Bexley,47579644
+Bicester,9957108
+Billericay,8215244
+Billingham,12498671
+Bilston (Wolverhampton),8440475
+Birkenhead,26582372
+Birmingham,221080752
+Bishop Auckland,6680883
+Bishop's Stortford,10065054
+Blackburn (Blackburn with Darwen),31028976
+Blackpool,35375479
+Bletchley,11482037
+Bloxwich,10719797
+Blyth (Northumberland),11767865
+Bognor Regis,16656597
+Bolton (Bolton),38595625
+Bootle (Sefton),13059674
+Borehamwood,7784098
+Boston,14132031
+Bournemouth,38775819
+Bracknell,18975369
+Bradford,63776692
+Braintree,10453499
+Brent,40901209
+Brentwood,14402405
+Bridgend,16313891
+Bridgwater,12337113
+Bridlington,8934070
+Brierley Hill,8401685
+Brighouse,9982285
+Brighton and Hove,41979507
+Bristol,73455508
+Broadstairs,7692251
+Bromley,81146474
+Bromsgrove,9154170
+Burgess Hill,8839553
+Burnley,17018459
+Burntwood,7463445
+Burton End,7881060
+Burton upon Trent,23641632
+Bury (Bury),19624204
+Bury St Edmunds,14666170
+Bushey,7151554
+Byfleet,7650802
+Caerphilly,9165683
+Camberley,12107956
+Cambridge (Cambridge),36115474
+Cambuslang,10671199
+Camden,18252206
+Cannock,17921162
+Canterbury,13593528
+Canvey Island,9346348
+Cardiff,75170617
+Carlisle,21427687
+Carlton (Gedling),14351350
+Carterton,8120686
+Castleford,11806992
+Caterham,6587996
+Catterick Garrison,6530779
+Caversham,8478818
+Chadderton,9824058
+Chafford Hundred and West Thurrock,7382568
+Chandler's Ford,9570315
+Chatham,14032356
+Chelmsford,25560064
+Cheltenham,28087994
+Cheshunt,8439210
+Chester,24666891
+Chester-le-Street,6758392
+Chesterfield,24321043
+Chichester,9645302
+Chippenham (Wiltshire),9872854
+Chorley,9998169
+Chorleywood,6610402
+"Christchurch (Bournemouth, Christchurch and Poole)",14614663
+City of Westminster,18055912
+Clacton-on-Sea,13411971
+Clydebank,11511508
+Coalville,6589322
+Coatbridge,11443350
+Cobham (Elmbridge),9162567
+Colchester,34318842
+Colwyn Bay,8699101
+Congleton,9645142
+Consett,7914414
+Corby,26025676
+Coventry,78434739
+Cramlington,9486780
+Crawley (Crawley),25609005
+Crewe,18932176
+Crosby (Sefton),11517881
+Crowborough,8843922
+Croydon,69210052
+Cumbernauld,15443925
+Cwmbrân,14638609
+Darlington,24767986
+Dartford,15038155
+Darwen,6775245
+Daventry,9117796
+Denton (Tameside),7381499
+Derby,65382575
+Dereham,6652576
+Dewsbury,15579693
+Didcot,8965300
+Doncaster,30629306
+Dover,8451929
+Droitwich Spa,7389622
+Dudley (Dudley),15200230
+Dumfries,11561230
+Dundee,35101739
+Dunfermline,17304800
+Dunstable,6592958
+Durham,14841550
+Ealing,46986898
+East Grinstead,7738741
+East Kilbride,23179660
+Eastbourne,20065731
+Eastleigh,11649922
+Ebbw Vale,6979991
+Eccles (Salford),8399706
+Edinburgh,102481598
+Egham,6879397
+Elgin,9411724
+Ellesmere Port,26631382
+Enfield,53201217
+Epsom,8239251
+Eston,8621868
+Evesham,7029352
+Ewell,7134972
+Exeter,30275698
+Exmouth,9706049
+Falkirk,8505444
+Fareham,11818482
+Farnborough,18715887
+Farnham,8388969
+Felixstowe,11372535
+Fleet,11247153
+Fleetwood,6842814
+Folkestone,12846074
+Formby,7690821
+Frome,6918558
+Fulwood,9012943
+Gainsborough,6722373
+Gateshead,30127257
+Gillingham (Medway),21895781
+Glasgow,139498847
+Glenrothes,13680995
+Gloucester,28137261
+Golborne,6885868
+Gosport,15441585
+Grangemouth,13329428
+Grantham,13255968
+Gravesend,10813837
+Grays,8123114
+Great Bookham and Fetcham,8865502
+Great Malvern,11899974
+Great Yarmouth,7373708
+Greenock,9177426
+Greenwich,39919993
+Grimsby,24740695
+Guildford,19973551
+Hackney,16845358
+Hale (Trafford),12146439
+Halesowen,15141442
+Halifax,19874563
+Hamilton,14268668
+Hammersmith and Fulham,14599280
+Haringey,27215818
+Harlow,19865500
+Harpenden,9316970
+Harrogate,20060536
+Harrow,42550719
+Hartlepool,26735906
+Haslemere,7227460
+Hastings,21968668
+Hatfield,7962187
+Havant,11647829
+Haverhill,7929642
+Havering,52294108
+Haywards Heath,10385598
+Hazlemere,6648986
+Heanor,6754442
+Hemel Hempstead,22599259
+Hereford,17671800
+Hertford,6729965
+Heswall,10184282
+Heywood,7970060
+High Wycombe,18486974
+Hillingdon,77178121
+Hilton (Eden),15400850
+Hinckley,14700445
+Hitchin,8376895
+Hoddesdon,9705750
+Holbury,7226659
+Hookwood,7386078
+Horley (Reigate and Banstead),6722022
+Horndean,8481381
+Horsham,11938568
+Horwich,6620071
+Hounslow,40770778
+Hucknall,8564360
+Huddersfield,38960246
+Humberston and New Waltham,6634397
+Huntingdon,7843927
+Huyton with Roby,12682256
+Hyde (Tameside),7669235
+Ilkeston,9927389
+Immingham,9690579
+Inverness,20024133
+Ipswich,39109148
+Irvine,10308670
+Islington,14444168
+Jarrow,8157528
+Keighley,11221436
+Kendal,8435621
+Kenilworth,7194959
+Kensington and Chelsea,11167080
+Kettering,17122304
+Kidderminster,16002645
+Kilmarnock,13815767
+King's Lynn,15518463
+Kingston upon Hull,66422012
+Kingston upon Thames,27594200
+Kingswinford,13005332
+Kingswood and Fishponds,33614552
+Kirkby,13966227
+Kirkcaldy,15500366
+Kirkintilloch,8397374
+Knowle and Dorridge,7646041
+Lambeth,24986920
+Lancaster,10848552
+Lancing and Sompting,8147436
+Larbert and Stenhousemuir,8043264
+Larkfield,8071901
+Lee-on-the-Solent,7252728
+Leeds,120104328
+Leicester,74348572
+Leigh (Wigan),10264134
+Leighton Buzzard,10485536
+Letchworth,9808605
+Lewisham,32656481
+Leyland,11643050
+Lichfield,9248591
+Lincoln,24438880
+Little Hulton,6625154
+Liverpool,110468050
+Livingston,21567376
+Llanelli,13404726
+Locks Heath,13211551
+Long Eaton,9654023
+Longbenton,7370112
+Loughborough,15967271
+Loughton,7244631
+Lowestoft,21425882
+Luton,41374263
+Lytham St Anne's,12421078
+Macclesfield,14288239
+Maidenhead,17036580
+Maidstone,24533975
+Maldon,6901557
+Manchester,75473535
+Mansfield,19315261
+March,6567630
+Margate,13440766
+Market Harborough,7630077
+Melton Mowbray,8022784
+Merthyr Tydfil,11119526
+Merton,30113590
+Middlesbrough,43970377
+Middleton (Rochdale),9659537
+Mildenhall (West Suffolk),6858726
+Milford Haven,9000535
+Milton Keynes,51762610
+Morecambe,7966374
+Morley (Leeds),7834237
+Motherwell,11500443
+Neath,11946757
+"New Haw, West Byfleet and Sheerwater",11011493
+Newark-on-Trent,9107070
+Newbury,12644390
+Newcastle upon Tyne,60891459
+Newcastle-under-Lyme,20649462
+Newham,34034189
+Newmarket,6605900
+Newport (Isle of Wight),7378562
+Newport (Newport),40400762
+Newquay,6623187
+Newton Abbot,7420427
+Newton Aycliffe,9840788
+Newton Mearns,9222531
+Normanton (Wakefield),7794046
+North Killingholme,10723747
+Northampton,60830422
+Norwich,56045930
+Nottingham,60018966
+Nuneaton,21285046
+Old Trafford,11409604
+Oldbury (Sandwell),10571553
+Oldham,16386169
+Ormskirk,7260799
+Oxford,34963600
+Paignton,17739990
+Paisley,21588703
+Penarth,6823057
+Perth,16107164
+Peterborough,48600877
+Peterhead,8441701
+Peterlee,8100484
+Plymouth,61431541
+Pontefract,8244898
+Pontypool,9005432
+Pontypridd,8753921
+Poole,39444561
+Port Talbot,15701605
+Portsmouth,34550827
+Prescot,8629430
+Preston (Preston),19836669
+Prestwick,8416153
+Pudsey,8335924
+Ramsgate,8017174
+Rawtenstall,7200057
+Rayleigh,8681219
+Reading,42522424
+Redbridge,37653473
+Redcar,12486390
+Redditch,21708543
+Redhill (Reigate and Banstead),6845837
+Reigate,7316123
+Renfrew,11324653
+Retford,7351844
+Rhyl,6649977
+Richmond upon Thames,31353282
+Rickmansworth,6806660
+Ripley (Amber Valley),6903977
+Rochdale,25418942
+Rochester,14960844
+Rotherham,20631147
+Rowley Regis,7357740
+Royal Leamington Spa,9860738
+Royal Sutton Coldfield,25841135
+Royal Tunbridge Wells,12663498
+Rugby,24326562
+Rugeley,7315204
+Runcorn,20602819
+Rushden,7998334
+Rustington,10880620
+Sale,12492316
+Salford,17966043
+Salisbury,12445487
+Scarborough,15163725
+Scunthorpe,29572112
+Seaford,6667944
+Sedgley,7232629
+Sevenoaks,11311296
+Sheffield,114738370
+Shrewsbury,23133867
+Sittingbourne,14063633
+Skegness,7589020
+Skelmersdale,11332673
+Slough,28050274
+Smethwick,8799515
+Solihull,33124378
+South Shields,15376119
+Southampton,48174396
+Southend-on-Sea,36421940
+Southport,25720259
+Southwark,27197859
+Spalding,9183193
+St Albans,17486918
+St Austell,6749528
+St Helens (St. Helens),28808792
+St Neots,8322528
+Stafford,22305879
+Staines-upon-Thames,6791738
+Stanford-le-Hope,9430156
+Stevenage,21946606
+Stirling,12541187
+Stockport,23934640
+Stockton-on-Tees,23936100
+Stoke-on-Trent,71265981
+Stourbridge,14529677
+Stowmarket,6735927
+Stratford-upon-Avon,9383643
+Stratton St Margaret,8166450
+Stroud,7537839
+Sudbury,7013251
+Sunderland,40606556
+Sutton (Sutton),36558482
+Sutton in Ashfield,11046272
+Swadlincote,9371022
+Swansea,50800875
+Swindon (Swindon),40405749
+Tadworth and Epsom Downs,9164508
+Tamworth,20878273
+Taunton,16720256
+Telford,55192667
+Thetford,7415802
+Thornaby-on-Tees,6840728
+Thundersley and South Benfleet,12868283
+Tilbury,6574029
+Tipton,9787175
+Tonbridge,9756059
+Torquay,12409446
+Totton,7693402
+Tower Hamlets,19018980
+Trowbridge,10814819
+Truro,7437254
+Tynemouth,16468901
+Urmston,8876324
+Wakefield,28476326
+Wallasey,16830087
+Wallsend,11356915
+Walsall,14544094
+Waltham Forest,29266552
+Wandsworth,29373173
+Warrington,48167852
+Warwick,11366949
+Washington,16624120
+Waterlooville,8937984
+Watford (Watford),24490277
+Wath upon Dearne,6721923
+Wellingborough,15620693
+Welwyn Garden City,12927882
+West Bridgford,8405995
+West Bromwich,22389724
+West Molesey,11310326
+Weston-super-Mare,18733563
+Weymouth,15416263
+Whitehaven,7423401
+Whitley Bay,7307490
+Whitstable,10343737
+Wickersley and Bramley,6744369
+Widnes,22011271
+Wigan,19199436
+Wigston,8339033
+Willenhall,10966241
+Willerby and Anlaby,6602931
+Wilmslow,8524872
+Winchester,13553805
+Windsor,7342349
+Winsford,10348566
+Wisbech,9173738
+Wishaw,8358051
+Witham,6952399
+Witney,7784096
+Woking,18993666
+Wokingham,15380444
+Wolverhampton,57962977
+Worcester,25600280
+Workington,7281508
+Worksop,13393295
+Worthing,23074277
+Wrexham,12601195
+Wythenshawe,22048045
+Yate,8038116
+Yeovil,13339341
+York,29371469
