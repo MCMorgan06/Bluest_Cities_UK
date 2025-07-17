@@ -1,0 +1,2 @@
+Land_Cover_Data.gpkg - Composite map of land cover/use. Load style lcm_vector_cv_friendly.qml
+bua_points.gpkg - point data for built up areas, use class_point_symbology.qml to reproduce Fig. 2a and bluespace_point_symbology.qml to reproduce Fig. 2d. 
