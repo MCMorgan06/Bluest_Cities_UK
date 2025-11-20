@@ -5,11 +5,15 @@ Annotated scripts and databases for reproducing "Urban blue and green spaces in 
 This repository contains modified versions of the following datasets:
 
 UKCEH Land Cover Map 2021 (LCM21) – originally provided by the UK Centre for Ecology & Hydrology (UKCEH).
+
 (https://eidc.ceh.ac.uk/licences/lcm-raster/plain)
+
 Marston, C.; Rowland, C.S.; O'Neil, A.W.; Morton, R.D. (2022). Land Cover Map 2021 (10m classified pixels, GB). NERC EDS Environmental Information Data Centre. https://doi.org/10.5285/a22baa7c-5809-4a02-87e0-3cf87d4e223a
 
 OS Local Vector – provided by Ordnance Survey (OS).
+
 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+
 https://osdatahub.os.uk/data/downloads/open/VectorMapDistrict?_gl=1*i4t57m*_gcl_au*MTI0MzIzNjIyOC4xNzYxNzYyMTM4*_ga*MTY1NzEzODMwMC4xNzYwNzI1OTQ1*_ga_59ZBN7DVBG*czE3NjM2NDMwNTMkbzMkZzEkdDE3NjM2NDMwNjYkajQ3JGwwJGgw*_ga_E5T3PCFCG7*czE3NjM2NDMwNTMkbzMkZzEkdDE3NjM2NDMwNjYkajQ3JGwwJGgw
 
 **Important Usage Restrictions**
